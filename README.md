@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+## Login
+1. UI
+2. 手机号校验
+3. 密码星号显示隐藏处理
+4. entrance(state)
+5. login event
+6. route跳转
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## main
+1. nav导航(router)
+2. blog展示组件(state)
+3. add content框
+4. 评论修改框
+5. add blog event
+6. edit/read blog event
 
-## Available Scripts
+## TASK1:build the framework
+    1.build up login page -- 2 entrance
+    2.build up main page
+        (1).nav routers -- 3
+        (2).list modal
+        (3).add button
+    3.add an edit component
+    4.add read component
 
-In the project directory, you can run:
+## TASK2:interact
+    1. login state connect
+    2. add article part
+    3. add edit function
+    4. add delete function
 
-### `npm start`
+## 变更想法：
+1.登陆界面：
+分为游客登陆与作者登陆，用于区别权限
+2.主页：
+主页的主体是展示内容，扩大list部分在整体的所占比例可以让主页内容更清晰。
+做法：(1).缩小content框比例，将其放置在list内容上部。
+(2).将content部分变成一个组件，在list下方设置添加按钮，点击打开content页面进行添加。
+## 登陆页面
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+登陆
+添加两个入口
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+游客：
+1. 登陆
+2. 进入主页无法添加编辑删除
+3. 主页可以打开文章进行添加评论
+4. 可以删除评论
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+作者：
+1. 登陆
+2. 进入主页面可以添加删除
+3. 点击edit按钮可以进行修改
+4. 可以打开文章评论以及删除评论
