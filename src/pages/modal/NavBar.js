@@ -1,17 +1,6 @@
 import React from "react";
-import "./pages.css"
+import "../pages.css"
 import { List, ListItemButton, ListItemText} from "@mui/material";
-
-// export const NavBar = () =>{
-//     return (
-//         <div className="navbar">
-//             <div className="nav">主页</div>
-//             <div className="nav">热点</div>
-//             <div className="nav">我的</div>
-//         </div>
-//     )
-// }
-
 
 export const NavBar = () => {
     const [open, setOpen] = React.useState(true);

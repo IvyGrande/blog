@@ -1,16 +1,15 @@
 import React from "react";
 import {Card, CardActionArea, CardContent, Typography} from "@mui/material";
 
-export const ArticleCard = () => {
+export const ArticleCard = (props) => {
     return (
         <div className="card">
             <Card>
                 <CardActionArea>
                     <CardContent>
-                        <h1>hello,world</h1>
+                        <h1>{props.list.title}</h1>
                         <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
+                            {props.list.summary}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
