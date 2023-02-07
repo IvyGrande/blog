@@ -1,7 +1,7 @@
 import React from "react";
 import {Card, CardActionArea, CardContent, Typography} from "@mui/material";
 
-export const MainPart = () => {
+export const ArticleCard = () => {
     return (
         <div className="card">
             <Card>
@@ -16,5 +16,5 @@ export const MainPart = () => {
                 </CardActionArea>
             </Card>
         </div>
-    );
+    )
 }
