@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import articleList from "../data/articleList";
-import {ArticleCard} from "../../component/ArticleCard";
+import {ArticleCard} from "../component/ArticleCard";
 
 
 

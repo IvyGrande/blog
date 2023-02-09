@@ -4,7 +4,8 @@ import {Button} from "@mui/material";
 import {connect} from "react-redux";
 
 const loginClick = () => {
-
+    console.log("1")
+    window.location.href="/login"
 }
 export const Header = () => {
 

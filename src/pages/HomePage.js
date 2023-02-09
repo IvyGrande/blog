@@ -7,11 +7,11 @@ import {MainPart} from "./modal/MainPart";
 export const HomePage = () => {
     return (
         <div className="homepage">
-            <Header />
-<div className="main">
-    <NavBar />
-    <MainPart />
-</div>
+            <Header/>
+            <div className="main">
+                <NavBar/>
+                <MainPart/>
+            </div>
         </div>
     )
 }
