@@ -1,8 +1,8 @@
 import React from "react";
-import './pages.css'
-import {Header} from "./modal/Header";
-import {NavBar} from "./modal/NavBar";
-import {MainPart} from "./modal/MainPart";
+import './_css_/pages.css'
+import {Header} from "./MainPart/Header";
+import {NavBar} from "./MainPart/NavBar";
+import {MainPart} from "./MainPart/MainPart";
 
 export const HomePage = () => {
     return (

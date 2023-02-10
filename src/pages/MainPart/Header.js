@@ -1,11 +1,11 @@
 import React from "react";
-import '../pages.css'
+import '../_css_/pages.css'
 import {Button} from "@mui/material";
 import {connect} from "react-redux";
 
 const loginClick = () => {
     console.log("1")
-    window.location.href="/login"
+    window.location.href="/loginReducer"
 }
 export const Header = () => {
 

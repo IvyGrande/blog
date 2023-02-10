@@ -1,11 +1,10 @@
 import React, {useState} from "react";
 import articleList from "../data/articleList";
 import {ArticleCard} from "../component/ArticleCard";
-
-
+import {connect} from "react-redux";
 
 export const MainPart = () => {
-    const [cardList,setCardList] = useState(articleList);
+    const [cardList, setCardList] = useState(articleList);
     const CardModal = cardList.map(
         item => {
             return (
@@ -13,7 +12,7 @@ export const MainPart = () => {
                     key={item.id}
                     id={item.id}
                     list={item}
-                    />
+                />
             )
         }
     )
@@ -23,3 +22,9 @@ export const MainPart = () => {
         </div>
     );
 }
+
+function mapStateToProps() {
+
+}
+
+export default connect(mapStateToProps)(MainPart)

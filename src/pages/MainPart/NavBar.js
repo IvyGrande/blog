@@ -1,5 +1,5 @@
 import React from "react";
-import "../pages.css"
+import "../_css_/pages.css"
 import { List, ListItemButton, ListItemText} from "@mui/material";
 
 export const NavBar = () => {

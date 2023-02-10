@@ -3,7 +3,7 @@
 2. 手机号校验
 3. 密码星号显示隐藏处理
 4. entrance(state)
-5. login event
+5. loginReducer event
 6. route跳转
 
 ## main
@@ -15,7 +15,7 @@
 6. edit/read blog event
 
 ## TASK1:build the framework
-    1.build up login page -- 2 entrance
+    1.build up loginReducer page -- 2 entrance
     2.build up main page
         (1).nav routers -- 3
         (2).list modal
@@ -24,7 +24,7 @@
     4.add read component
 
 ## TASK2:interact
-    1. login state connect
+    1. loginReducer state connect
     2. add article part
     3. add edit function
     4. add delete function
