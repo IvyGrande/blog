@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import articleList from "../data/articleList";
-import {ArticleCard} from "../component/ArticleCard";
+import articleList from "../../../Data/Article_List";
+import {ArticleCard} from "./ArticleCard/ArticleCard";
 import {connect} from "react-redux";
 
-export const MainPart = () => {
+const Table = () => {
     const [cardList, setCardList] = useState(articleList);
     const CardModal = cardList.map(
         item => {
@@ -23,8 +23,11 @@ export const MainPart = () => {
     );
 }
 
-function mapStateToProps() {
-
+function mapStateToProps(state) {
+    console.log(state)
+    return {
+        name: state.username
+    }
 }
 
-export default connect(mapStateToProps)(MainPart)
+export default connect(mapStateToProps)(Table)

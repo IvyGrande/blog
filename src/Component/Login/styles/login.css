@@ -1,9 +1,12 @@
 .loginBody{
     height: 900px;
+    width: 1800px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     color: white;
+    background-color: green;
 }
 
 .loginBody .loginCard {
@@ -15,6 +18,8 @@
     width: 500px;
     background-color: #61dafb;
 }
-.loginBody .loginCard .inbox{
+.loginBody .loginCard .form-control{
     margin-bottom: 20px;
+    height: 30px;
+    width: 300px;
 }

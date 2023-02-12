@@ -1,6 +1,6 @@
 import React from "react";
-import "../_css_/pages.css"
-import { List, ListItemButton, ListItemText} from "@mui/material";
+import './styles/NavBar.css'
+import {Link, List, ListItemButton, ListItemText} from "@mui/material";
 
 export const NavBar = () => {
     const [open, setOpen] = React.useState(true);
@@ -16,11 +16,15 @@ export const NavBar = () => {
         aria-labelledby="nested-list-subheader"
     >
         <ListItemButton className="nav">
-            <ListItemText primary="主页" />
+
+            <Link to="/">            <ListItemText primary="主页" /></Link>
         </ListItemButton>
-        <ListItemButton className="nav">
-            <ListItemText primary="热点" />
-        </ListItemButton>
+
+        <Link to={"/hot"}>
+            <ListItemButton className="nav">
+                <ListItemText primary="热点" />
+            </ListItemButton>
+        </Link>
         <ListItemButton onClick={handleClick} className="nav">
             <ListItemText primary="我的" />
             {/*{open ? <ExpandLess /> : <ExpandMore />}*/}

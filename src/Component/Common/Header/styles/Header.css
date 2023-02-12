@@ -1,0 +1,14 @@
+.header{
+    background-color: #61dafb;
+    height: 70px;
+    width: 1700px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 80px 10px 30px;
+    align-items: center;
+    color: white;
+}
+.header h1{
+    margin-left: 120px;
+}

@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux'
 import loginReducer from "./loginReducer";
-
-
-
+import {openLoginReducer} from "./mainPage";
 
 const rootReducer = combineReducers({
-    login: loginReducer
+    loginReducer,
+    openLoginReducer
 })
 
 export default rootReducer;

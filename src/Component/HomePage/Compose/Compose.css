@@ -1,0 +1,28 @@
+.compose{
+    height: 900px;
+    width: 1800px;
+    display: flex;
+    /*justify-content: center;*/
+    flex-direction: column;
+    align-items: center;
+    color: #61dafb;
+    /*background-color: salmon;*/
+}
+.compose .block{
+    margin-top: 40px;
+    height: 400px;
+    width: 1000px;
+}
+.compose .block .head{
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+.compose .block .head button{
+    margin-left: 10px;
+}
+.compose .block .text{
+    margin-bottom: 20px;
+}
