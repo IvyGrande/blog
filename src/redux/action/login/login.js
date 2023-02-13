@@ -1,7 +1,5 @@
-import {UPDATE_ACCOUNT} from "../constants/constant";
+import {UPDATE_ACCOUNT} from "../../constants/constant";
 // import axios from "axios";
-
-
 
 export const updateAccount= (name) => {
     console.log("action",name)

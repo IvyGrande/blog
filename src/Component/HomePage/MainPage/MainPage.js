@@ -1,60 +1,45 @@
-import React, {useState} from "react";
+import React from "react";
 import './styles/MainPage.css'
 import Header from "../../Common/Header/Header";
 import {NavBar} from "../../Common/NavBar/NavBar";
-import Content from "../../Common/Table/Table";
-import Login from "../../Login/login";
+import Login from "../../Login/Login";
 import {connect} from "react-redux";
-import {Compose} from "../Compose/Compose";
+import Compose from "../../Common/Compose/Compose";
+import CardTable from "./CardTable/CardTable";
 
-const MainPage = () => {
-    const [showHomePage, setShowHomePage] = useState(true);
-    const [showLogin,setShowLogin]= useState(false);
-    const [showCompose,setShowCompose]= useState(false);
-    const getLoginState = (e) => {
-        setShowHomePage(!e);
-        setShowLogin(e);
-        setShowCompose(!e);
-    };
-    const getComposeState =(e)=>{
-        setShowHomePage(!e);
-        setShowLogin(!e);
-        setShowCompose(e);
-    }
-    console.log("show", showLogin)
+const MainPage = (props) => {
+
     return (<div>
-            {/*<div className="homepage">*/}
-            {/*                <Header/>*/}
-            {/*                <div className="main">*/}
-            {/*                    <NavBar/>*/}
-            {/*                    <Content/>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*<Login/>*/}
-            {showHomePage && <div className="homepage">
-                <Header
-                    addLogin={getLoginState}
-                    composeState={getComposeState}
-                />
+            {<div className="homepage">
+                <Header/>
                 <div className="main">
                     <NavBar/>
-                    <Content/>
+                    <CardTable/>
                 </div>
             </div>}
-            {showLogin && <Login closeLogin={getLoginState}/>}
+            {/*{props.loginState && <Login />}*/}
+            {/*{props.showCompose && <Compose/>}*/}
 
-            {showCompose&&            <Compose/>
-            }        </div>
+        </div>
 
     )
 
 }
 
-function mapStateToProps(state) {
+// function mapStateToProps(state) {
+// console.log("state",state.openPageReducer)
+//     return {
+//         loginState: state.openPageReducer.login,
+//         showHomePage:state.openPageReducer.home,
+//         showCompose:state.openPageReducer.compose
+//     }
+// }
 
+const mapDispatchToProps = (dispatch) => {
     return {
-        loginState: state.openLoginReducer
+        // getState: () => dispatch()
     }
 }
 
-export default connect(mapStateToProps)(MainPage)
+
+export default connect(null, mapDispatchToProps)(MainPage)
