@@ -1,4 +1,4 @@
-.compose{
+.compose {
     height: 900px;
     width: 1800px;
     display: flex;
@@ -8,21 +8,26 @@
     color: #61dafb;
     /*background-color: salmon;*/
 }
-.compose .block{
+
+.compose .block {
     margin-top: 40px;
     height: 400px;
     width: 1000px;
+    /*background-color: green;*/
 }
-.compose .block .head{
+
+.compose .block .head {
     width: 1000px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
 }
-.compose .block .head button{
+
+.compose .block .head button {
     margin-left: 10px;
 }
-.compose .block .text{
+
+.compose .block .text {
     margin-bottom: 20px;
 }

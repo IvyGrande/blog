@@ -1,4 +1,4 @@
-.loginBody{
+.loginBody {
     height: 900px;
     width: 1800px;
     display: flex;
@@ -18,7 +18,8 @@
     width: 500px;
     background-color: #61dafb;
 }
-.loginBody .loginCard .form-control{
+
+.loginBody .loginCard .form-control {
     margin-bottom: 20px;
     height: 30px;
     width: 300px;

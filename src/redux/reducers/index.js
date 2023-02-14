@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux'
-import loginReducer from "./loginReducer/loginReducer";
-import {editState, openPageReducer, StoreSelected} from "./pageReducer/articleReducer";
-import submitReducer from "./submitReducer/submit";
+import loginReducer from "./loginReducer";
+import { articleReducer} from "./articleReducer";
+import articleSelectedReducer from "./chosenReducer";
+
 
 const rootReducer = combineReducers({
     loginReducer,
-    openPageReducer,
-    submitReducer,
-    StoreSelected,
-    editState
-})
+    articleReducer,
+    articleSelectedReducer
+  }
+)
 
 export default rootReducer;
 

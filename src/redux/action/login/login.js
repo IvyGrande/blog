@@ -1,11 +1,9 @@
-import {UPDATE_ACCOUNT} from "../../constants/constant";
-// import axios from "axios";
+import { UPDATE_ACCOUNT } from "../../constants/constant";
 
-export const updateAccount= (name) => {
-    console.log("action",name)
-    // axios.post('/api/register')
-    // return dispatch={
-    //     axios.post('/api/users')
-        return{type: UPDATE_ACCOUNT,
-        name}
+export const updateAccount = (name) => {
+  console.log("action", name)
+  return {
+    type: UPDATE_ACCOUNT,
+    name
+  }
 }
