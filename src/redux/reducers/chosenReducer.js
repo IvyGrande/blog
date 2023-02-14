@@ -1,7 +1,11 @@
-import { SELECT_CARD } from "../constants/constant";
+import { CANCEL_SELECT, SELECT_CARD } from "../constants/constant";
 
 const initState = {
-  articleSelected:{}
+  articleSelected:{
+    id: "",
+    title: "",
+    content: ""
+  }
 }
 
 const articleSelectedReducer = (state = initState, action) => {
@@ -11,6 +15,15 @@ const articleSelectedReducer = (state = initState, action) => {
       return {
         ...state,
         articleSelected: action.cardSelected
+      }
+    case CANCEL_SELECT:
+      return {
+        ...state,
+        articleSelected:{
+          id: "",
+          title: "",
+          content: ""
+        }
       }
     default :
       return state;

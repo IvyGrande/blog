@@ -1,4 +1,4 @@
-import { DELETE, SELECT_CARD, SUBMIT_ARTICLE } from "../../constants/constant";
+import { CANCEL_SELECT, DELETE, SELECT_CARD, SUBMIT_ARTICLE } from "../../constants/constant";
 
 export const updateCard = (newData) => {
   return {
@@ -10,6 +10,11 @@ export const selectCard = (cardSelected) => {
   return {
     type: SELECT_CARD,
     cardSelected
+  }
+}
+export const cancelSelected =()=>{
+  return{
+    type:CANCEL_SELECT
   }
 }
 export const deleteCard = (id) => {

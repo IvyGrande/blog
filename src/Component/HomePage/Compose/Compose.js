@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 import { useState } from "react";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
-import { updateCard } from "../../../redux/action/article/articleAction";
+import { cancelSelected, updateCard } from "../../../redux/action/article/articleAction";
+import Comment from "../../Common/Comment/Comment";
+import CommentModal from "../../Common/Comment/Comment";
 
 
 const Compose = (props) => {
@@ -17,10 +19,12 @@ const Compose = (props) => {
     const id = props.articleSelected.id ? props.articleSelected.id : uuid()
     const newArticle = {id, title, content}
     props.getData(newArticle);
+    props.cancel_select();
     navigate("/");
   }
 
   const cancel = () => {
+    props.cancel_select();
     navigate("/");
   }
   const inputTitle = (e) => {
@@ -31,14 +35,19 @@ const Compose = (props) => {
   };
   return (
     <div className="compose">
+      {/*<Comment />*/}
       <div className="block">
-        <div className="head">
-          <h2>{props.isEdit ? "EDIT" : "COMPOSE"}</h2>
-          <div className="submit">
-            <Button onClick={cancel}>Cancel</Button>
-            <Button onClick={submitData} type="primary">Submit</Button>
-          </div>
-        </div>
+        {!props.isAuthor &&
+          <h2>ARTICLE</h2>
+        }
+          {props.isAuthor &&
+          <div className="head">
+            <h2>{props.articleSelected.id ? "EDIT" : "COMPOSE"}</h2>
+            <div className="submit">
+              <Button onClick={cancel}>Cancel</Button>
+              <Button onClick={submitData} type="primary">Submit</Button>
+            </div>
+          </div>}
         <div className="text"><TextArea
           placeholder="Title"
           rows={1}
@@ -55,6 +64,7 @@ const Compose = (props) => {
             onChange={inputContent}
           />
         </div>
+        <CommentModal />
       </div>
     </div>
   )
@@ -70,6 +80,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch) => {
   return {
     getData: (e) => dispatch(updateCard(e)),
+    cancel_select: () => dispatch(cancelSelected())
   }
 }
 

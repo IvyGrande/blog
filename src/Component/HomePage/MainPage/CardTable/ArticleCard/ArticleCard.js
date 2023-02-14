@@ -9,10 +9,11 @@ import { useNavigate } from "react-router-dom";
 const ArticleCard = (props) => {
   const navigate = useNavigate();
   const handleOpen = () => {
-    // const readCard = props.cardList.find(card =>
-    //   card.id === props.id && card
-    // )
-    // props.getCard("card",readCard);
+    const readCard = props.cardList.find(card =>
+      card.id === props.id && card
+    )
+    props.getCard(readCard);
+    navigate("/compose");
   }
   const editCard = () => {
     const readCard = props.cardList.find(card =>
@@ -22,7 +23,7 @@ const ArticleCard = (props) => {
     navigate("/compose");
   }
   const deleteCard = () => {
-    // props.deleteId(props.id)
+    props.deleteId(props.id)
   }
   return (
     <div className="table">
@@ -53,7 +54,8 @@ const ArticleCard = (props) => {
 const mapStateToProps = (state) => {
   return {
     isAuthor: state.loginReducer.isAuthor,
-    cardList: state.articleReducer.articleList
+    cardList: state.articleReducer.articleList,
+    cardSelected: state.articleSelectedReducer.articleSelected
   }
 }
 
