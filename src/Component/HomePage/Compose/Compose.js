@@ -18,12 +18,12 @@ const Compose = (props) => {
     const id = props.articleSelected.id ? props.articleSelected.id : uuid()
     const newArticle = {id, title, content}
     props.getData(newArticle);
-    props.cancel_select();
+    props.cancel_select(props.articleSelected. commentList);
     navigate("/");
   }
 
   const cancel = () => {
-    props.cancel_select();
+    props.cancel_select(props.articleSelected. commentList);
     navigate("/");
   }
   const inputTitle = (e) => {
@@ -63,7 +63,7 @@ const Compose = (props) => {
             onChange={inputContent}
           />
         </div>
-        <CommentModal/>
+        {/*{!props.articleSelected.id && <CommentModal/>}*/}
       </div>
     </div>
   )
@@ -79,7 +79,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getData: (e) => dispatch(updateCard(e)),
-    cancel_select: () => dispatch(cancelSelected())
+    cancel_select: (e) => dispatch(cancelSelected(e))
   }
 }
 

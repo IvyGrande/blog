@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/ArticleCard.css"
-import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
+import { Card, CardActionArea, CardContent } from "@mui/material";
 import { deleteCard, selectCard } from "../../../../../redux/action/article/articleAction";
 import { connect } from "react-redux";
 import { Button } from "antd";
@@ -38,7 +38,7 @@ const ArticleCard = (props) => {
                 {/*<Typography variant="body2" color="text.secondary">*/}
                 <div>
                   <p className="row">{props.list.content}</p>
-                  <p>review:{props.list.commentList.length}</p>
+                  {/*<p>review:{props.list.commentList.length}</p>*/}
                 </div>
                 {/*</Typography>*/}
               </div>
@@ -60,7 +60,7 @@ const mapStateToProps = (state) => {
   return {
     isAuthor: state.loginReducer.isAuthor,
     cardList: state.articleReducer.articleList,
-    cardSelected: state.articleSelectedReducer.articleSelected
+    articleSelected: state.articleSelectedReducer.articleSelected
   }
 }
 

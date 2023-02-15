@@ -17,18 +17,14 @@
 .table .cardItem {
     margin: 0px 0px 0px 30px;
     width: 1000px;
-    display: flex;
-    flex-direction: column;
+
 }
 .table .cardItem .cardTop{
-    width: 100px;
     height: 20px;
 }
 .table .cardItem h3 {
     margin: 0;
     padding: 0;
-    width: 90px;
-    height: 20px;
 }
 
 .table .cardItem .row {

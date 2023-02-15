@@ -7,8 +7,6 @@ import { connect } from "react-redux";
 import uuid from "react-uuid";
 import { addComment } from "../../../redux/action/article/articleAction";
 import { CommentShowModal } from "./ListModal/commentShowModal";
-// import { articleReducer } from "../../../redux/reducers/articleReducer";
-// import articleSelectedReducer from "../../../redux/reducers/chosenReducer";
 
 
 const CommentModal = (props) => {
@@ -26,7 +24,7 @@ const CommentModal = (props) => {
     props.addComment(props.articleSelected.id, newComment);
   }
   console.log(props.commentIsShow)
-  const articleToShow=props.commentIsShow.find(item=>item.id===props.articleSelected.id&&item)
+  const articleToShow = props.commentIsShow.find(item => item.id === props.articleSelected.id && item)
   console.log(articleToShow.commentList)
   const showComment = articleToShow.commentList.map(
     item => {
@@ -34,6 +32,7 @@ const CommentModal = (props) => {
         <CommentShowModal
           key={item.ReviewId}
           id={item.ReviewId}
+          // name={item.name}
           content={item.review}
         />
       )
@@ -61,9 +60,6 @@ const CommentModal = (props) => {
             }}
           >
             <Menu
-              // anchorEl={anchorEl}
-              // open={Boolean(anchorEl)}
-              // onClose={() => setAnchorEl(null)}
               size="sm"
               placement="bottom-start"
               sx={{'--List-decorator-size': '24px'}}
@@ -76,6 +72,7 @@ const CommentModal = (props) => {
           minWidth: 1000
         }}
       />
+      {/*<Comment />*/}
     </FormControl>
   );
 }

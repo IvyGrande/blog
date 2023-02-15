@@ -1,16 +1,16 @@
 import { CANCEL_SELECT, SELECT_CARD } from "../constants/constant";
 
 const initState = {
-  articleSelected:{
+  articleSelected: {
     id: "",
     title: "",
     content: "",
-    review:[]
+    commentList: []
   }
 }
 
 const articleSelectedReducer = (state = initState, action) => {
-  console.log("select",action)
+  console.log("select", action)
   switch (action.type) {
     case SELECT_CARD :
       return {
@@ -20,10 +20,11 @@ const articleSelectedReducer = (state = initState, action) => {
     case CANCEL_SELECT:
       return {
         ...state,
-        articleSelected:{
-          id: "",
-          title: "",
-          content: ""
+        articleSelected: {
+          ...state.articleSelected,
+          id: '',
+          title: '',
+          content: ''
         }
       }
     default :

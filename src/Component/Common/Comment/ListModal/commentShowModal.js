@@ -3,6 +3,7 @@ export const CommentShowModal = (props) => {
   return(
     <div className="showComment">
       <div className="name">
+        {/*{props.name}*/}
         name
       </div>
       <div className="content">

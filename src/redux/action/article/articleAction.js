@@ -12,9 +12,10 @@ export const selectCard = (cardSelected) => {
     cardSelected
   }
 }
-export const cancelSelected =()=>{
+export const cancelSelected =(cancelItem)=>{
   return{
-    type:CANCEL_SELECT
+    type:CANCEL_SELECT,
+    cancelItem
   }
 }
 export const deleteCard = (id) => {
