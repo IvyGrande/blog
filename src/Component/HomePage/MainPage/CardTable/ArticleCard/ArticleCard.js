@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/ArticleCard.css"
 import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
-import { deleteCard,selectCard } from "../../../../../redux/action/article/articleAction";
+import { deleteCard, selectCard } from "../../../../../redux/action/article/articleAction";
 import { connect } from "react-redux";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
@@ -32,10 +32,15 @@ const ArticleCard = (props) => {
           <CardActionArea onClick={handleOpen} disabled={props.isAuthor ? true : false}>
             <CardContent>
               <div className="cardItem">
-                <h3>{props.list.title}</h3>
-                <Typography variant="body2" color="text.secondary">
-                  <p>{props.list.content}</p>
-                </Typography>
+                <div className="cardTop">
+                  <h3>{props.list.title}</h3>
+                </div>
+                {/*<Typography variant="body2" color="text.secondary">*/}
+                <div>
+                  <p className="row">{props.list.content}</p>
+                  <p>review:{props.list.commentList.length}</p>
+                </div>
+                {/*</Typography>*/}
               </div>
             </CardContent>
           </CardActionArea>
@@ -62,7 +67,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getCard: (e) => dispatch(selectCard(e)),
-    deleteId: (e) => dispatch(deleteCard(e))}
+    deleteId: (e) => dispatch(deleteCard(e))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleCard)

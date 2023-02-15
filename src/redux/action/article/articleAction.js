@@ -1,4 +1,4 @@
-import { CANCEL_SELECT, DELETE, SELECT_CARD, SUBMIT_ARTICLE } from "../../constants/constant";
+import { CANCEL_SELECT, DELETE, SELECT_CARD, SUBMIT_ARTICLE, UPDATE_COMMENT } from "../../constants/constant";
 
 export const updateCard = (newData) => {
   return {
@@ -21,6 +21,14 @@ export const deleteCard = (id) => {
   return {
     type: DELETE,
     id
+  }
+}
+export const addComment = (selectedId, item) => {
+  console.log("action", selectedId, item)
+  return {
+    type: UPDATE_COMMENT,
+    selectedId,
+    item
   }
 }
 

@@ -5,8 +5,7 @@ import { useState } from "react";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
 import { cancelSelected, updateCard } from "../../../redux/action/article/articleAction";
-import Comment from "../../Common/Comment/Comment";
-import CommentModal from "../../Common/Comment/Comment";
+import CommentModal from "../../Common/Comment/CommentModal";
 
 
 const Compose = (props) => {
@@ -40,7 +39,7 @@ const Compose = (props) => {
         {!props.isAuthor &&
           <h2>ARTICLE</h2>
         }
-          {props.isAuthor &&
+        {props.isAuthor &&
           <div className="head">
             <h2>{props.articleSelected.id ? "EDIT" : "COMPOSE"}</h2>
             <div className="submit">
@@ -64,13 +63,13 @@ const Compose = (props) => {
             onChange={inputContent}
           />
         </div>
-        <CommentModal />
+        <CommentModal/>
       </div>
     </div>
   )
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     articleSelected: state.articleSelectedReducer.articleSelected,
     isAuthor: state.loginReducer.isAuthor

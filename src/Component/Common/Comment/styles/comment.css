@@ -1,0 +1,11 @@
+
+.showComment{
+    height: 30px;
+    width: 1000px;
+    background-color: #69799a;
+    display: flex;
+}
+
+.showComment .name{
+
+}

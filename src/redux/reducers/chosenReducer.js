@@ -4,12 +4,13 @@ const initState = {
   articleSelected:{
     id: "",
     title: "",
-    content: ""
+    content: "",
+    review:[]
   }
 }
 
 const articleSelectedReducer = (state = initState, action) => {
-  console.log("select",state)
+  console.log("select",action)
   switch (action.type) {
     case SELECT_CARD :
       return {
