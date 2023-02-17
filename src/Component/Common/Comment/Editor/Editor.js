@@ -1,15 +1,19 @@
-import { Button, Form} from 'antd';
-import TextArea from "antd/es/input/TextArea";
+import React from "react";
+import Header from "../../Header/Header";
+import NavBar from "../../NavBar/NavBar";
 
-export const Editor = ({ onChange, onSubmit, submitting, value }) => (
-    <>
-        <Form.Item>
-            <TextArea rows={4} onChange={onChange} value={value} />
-        </Form.Item>
-        <Form.Item>
-            <Button htmlType="submit" loading={submitting} onClick={onSubmit} type="primary">
-                Add Comment
-            </Button>
-        </Form.Item>
-    </>
-);
+export default class Editor extends React.Component {
+  render() {
+    return (
+      <div>
+        <div className="homepage">
+          <Header/>
+          <div className="main">
+            <NavBar/>
+            <div>Editor</div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}

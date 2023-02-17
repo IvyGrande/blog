@@ -1,11 +1,17 @@
-
-.showComment{
-    height: 30px;
+.comment{
     width: 1000px;
-    background-color: #69799a;
-    display: flex;
 }
 
-.showComment .name{
+.comment .field{
+    width: 1000px;
+}
 
+.showComment{
+    width: 1000px;
+}
+
+.showComment .button{
+    width: 80px;
+    height: 20px;
+    font-size: 12px;
 }

@@ -1,12 +1,12 @@
 import "./styles/Compose.css"
-import { Button, Input } from 'antd';
 import { connect } from "react-redux";
 import { useState } from "react";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
 import { cancelSelected, updateCard } from "../../../redux/action/article/articleAction";
+import { Button, Input } from "antd";
+import { Comment } from "semantic-ui-react";
 import CommentModal from "../../Common/Comment/CommentModal";
-
 
 const Compose = (props) => {
   const [title, setTitle] = useState(props.articleSelected.title);
@@ -16,14 +16,15 @@ const Compose = (props) => {
 
   const submitData = () => {
     const id = props.articleSelected.id ? props.articleSelected.id : uuid()
-    const newArticle = {id, title, content}
+    const reviewInArticle = props.articleIsShow.find(e => e.id === props.articleSelected.id && e)
+    const commentList = props.articleSelected.id ? reviewInArticle.commentList : []
+    const newArticle = {id, title, content, commentList}
     props.getData(newArticle);
-    props.cancel_select(props.articleSelected. commentList);
+    props.cancel_select(props.articleSelected.commentList);
     navigate("/");
   }
-
   const cancel = () => {
-    props.cancel_select(props.articleSelected. commentList);
+    props.cancel_select(props.articleSelected.commentList);
     navigate("/");
   }
   const inputTitle = (e) => {
@@ -32,38 +33,66 @@ const Compose = (props) => {
   const inputContent = (e) => {
     setContent(e.target.value)
   };
+  const returnToHomepage = () => {
+    props.cancel_select(props.articleSelected.commentList);
+    navigate("/");
+  }
+
   return (
     <div className="compose">
-      {/*<Comment />*/}
       <div className="block">
         {!props.isAuthor &&
-          <h2>ARTICLE</h2>
-        }
-        {props.isAuthor &&
+          <>
           <div className="head">
-            <h2>{props.articleSelected.id ? "EDIT" : "COMPOSE"}</h2>
-            <div className="submit">
-              <Button onClick={cancel}>Cancel</Button>
-              <Button onClick={submitData} type="primary">Submit</Button>
+            <h2>ARTICLE</h2>
+            <Button onClick={returnToHomepage} type="primary">Back To Homepage</Button></div>
+            <div className="textShow">
+              <TextArea
+                rows={1}
+                bordered={false}
+                readOnly
+                size="large"
+                value={title}
+              /></div>
+            <div className="text">
+              <TextArea
+                bordered={false}
+                rows={20}
+                readOnly
+                value={content}
+              />
             </div>
-          </div>}
-        <div className="text"><TextArea
-          placeholder="Title"
-          rows={1}
-          readOnly={props.isAuthor ? false : true}
-          value={title}
-          onChange={inputTitle}
-        /></div>
-        <div className="text">
-          <TextArea
-            placeholder="Start here..."
-            readOnly={props.isAuthor ? false : true}
-            rows={12}
-            value={content}
-            onChange={inputContent}
-          />
-        </div>
-        {/*{!props.articleSelected.id && <CommentModal/>}*/}
+          </>
+        }
+
+        {props.isAuthor &&
+          <>
+            <div className="head">
+              <h2>{props.articleSelected.id ? "EDIT" : "COMPOSE"}</h2>
+              <div className="submit">
+                <Button onClick={cancel}>Cancel</Button>
+                <Button onClick={submitData} type="primary">Submit</Button>
+              </div>
+            </div>
+            <div className="text">
+              <TextArea
+                placeholder="Title"
+                rows={1}
+                value={title}
+                onChange={inputTitle}
+              /></div>
+            <div className="text">
+              <TextArea
+                placeholder="Start here..."
+                rows={12}
+                value={content}
+                onChange={inputContent}
+              />
+            </div>
+          </>
+        }
+        <Comment/>
+        {props.articleSelected.id && <CommentModal/>}
       </div>
     </div>
   )
@@ -72,6 +101,7 @@ const Compose = (props) => {
 const mapStateToProps = (state) => {
   return {
     articleSelected: state.articleSelectedReducer.articleSelected,
+    articleIsShow: state.articleReducer.articleList,
     isAuthor: state.loginReducer.isAuthor
   }
 }

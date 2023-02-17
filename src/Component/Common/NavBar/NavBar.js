@@ -2,13 +2,10 @@ import React from "react";
 import './styles/NavBar.css'
 import { Link, List, ListItemButton, ListItemText } from "@mui/material";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = (props) => {
-  const [open, setOpen] = React.useState(true);
-
-  const handleClick = () => {
-    setOpen(!open);
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="navbar">
@@ -16,26 +13,22 @@ const NavBar = (props) => {
         component="nav"
         aria-labelledby="nested-list-subheader"
       >
-        <ListItemButton className="nav">
-          <Link to="/"> <ListItemText primary="主页"/></Link>
+        <ListItemButton className="nav"onClick={()=>navigate("/")}>
+          <ListItemText primary="主页"/>
         </ListItemButton>
-        <Link to={"/hot"}>
-          <ListItemButton className="nav">
+          <ListItemButton className="nav"onClick={()=>navigate("/hot")}>
             <ListItemText primary="热点"/>
           </ListItemButton>
-        </Link>
         {props.isAuthor &&
-          <ListItemButton onClick={handleClick} className="nav">
+          <ListItemButton onClick={()=>navigate("/mine")} className="nav">
             <ListItemText primary="我的"/>
-            {/*{open ? <ExpandLess /> : <ExpandMore />}*/}
           </ListItemButton>}
       </List>
     </div>
   );
 }
 
-
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     isAuthor: state.loginReducer.isAuthor
   }

@@ -35,12 +35,10 @@ const ArticleCard = (props) => {
                 <div className="cardTop">
                   <h3>{props.list.title}</h3>
                 </div>
-                {/*<Typography variant="body2" color="text.secondary">*/}
                 <div>
                   <p className="row">{props.list.content}</p>
-                  {/*<p>review:{props.list.commentList.length}</p>*/}
+                  <p>review:{props.list.commentList.length}</p>
                 </div>
-                {/*</Typography>*/}
               </div>
             </CardContent>
           </CardActionArea>

@@ -1,86 +1,65 @@
-import React, { useState } from 'react';
-import { Box, FormControl } from "@mui/material";
-import Textarea from '@mui/joy/Textarea';
-import { Button, Menu } from "antd";
-import { connect } from "react-redux";
-// import { CommentShowModal } from "./ListModal/commentShowModal";
-import uuid from "react-uuid";
+import React, { useState } from 'react'
+import { Button, Comment, Form } from 'semantic-ui-react'
 import { addComment } from "../../../redux/action/article/articleAction";
-import { CommentShowModal } from "./ListModal/commentShowModal";
-
+import { connect } from "react-redux";
+import uuid from "react-uuid";
+import CommentShowModal from "./ListModal/CommentShowModal";
+import "./styles/comment.css"
 
 const CommentModal = (props) => {
-  // const [anchorEl, setAnchorEl] = useState(null);
   const [review, setReview] = useState("")
-  // console.log("new", props.articleSelected.id)
-  console.log("new", props.articleSelected.commentList)
+  const [reviewName, setReviewName] = useState("")
   const inputComment = (e) => {
     setReview(e.target.value)
+    setReviewName(props.isAuthor ? props.name : "visitor")
+    console.log("name", reviewName)
   }
   const handleClick = () => {
-    const newComment = {ReviewId: uuid(), review}
-    // console.log("new",props.articleSelected.id, newComment)
+    console.log(props.isAuthor)
+    const newComment = {reviewId: uuid(), reviewName, review}
     setReview('')
     props.addComment(props.articleSelected.id, newComment);
   }
-  console.log(props.commentIsShow)
-  const articleToShow = props.commentIsShow.find(item => item.id === props.articleSelected.id && item)
-  console.log(articleToShow.commentList)
+  const articleToShow = props.articleIsShow.find(item => item.id === props.articleSelected.id && item)
   const showComment = articleToShow.commentList.map(
     item => {
       return (
         <CommentShowModal
-          key={item.ReviewId}
-          id={item.ReviewId}
-          // name={item.name}
+          key={item.reviewId}
+          id={item.reviewId}
           content={item.review}
+          nameShow={item.reviewName}
         />
       )
     })
-
   return (
-    <FormControl>
-      <h2>COMMENT</h2>
-      {showComment}
-      <Textarea
-        placeholder="Type something here…"
-        minRows={3}
-        value={review}
-        onChange={inputComment}
-        endDecorator={
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'right',
-              gap: 'var(--Textarea-paddingBlock)',
-              pt: 'var(--Textarea-paddingBlock)',
-              borderTop: '1px solid',
-              borderColor: 'divider',
-              flex: 'auto',
-            }}
-          >
-            <Menu
-              size="sm"
-              placement="bottom-start"
-              sx={{'--List-decorator-size': '24px'}}
-            >
-            </Menu>
-            <Button onClick={handleClick}>Send</Button>
-          </Box>
-        }
-        sx={{
-          minWidth: 1000
-        }}
-      />
-      {/*<Comment />*/}
-    </FormControl>
-  );
+    <div className="comment">
+      <Comment.Group>
+        <h3>COMMENTS</h3>
+        {showComment}
+        <Form className="input-box" reply>
+          <Form.TextArea
+            placeholder="Type something here…"
+            onChange={inputComment}
+            value={review}
+          />
+          <Button content='Add Reply'
+                  labelPosition='left'
+                  icon='edit'
+                  onClick={handleClick}
+                  primary/>
+        </Form>
+      </Comment.Group>
+    </div>
+  )
 }
 
 const mapStateToProps = (state) => {
   return {
-    commentIsShow: state.articleReducer.articleList,
-    articleSelected: state.articleSelectedReducer.articleSelected
+    articleIsShow: state.articleReducer.articleList,
+    articleSelected: state.articleSelectedReducer.articleSelected,
+    isAuthor: state.loginReducer.isAuthor,
+    name: state.loginReducer.username
   }
 }
 
@@ -91,3 +70,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentModal)
+
+const styleLink = document.createElement("link");
+
+styleLink.rel = "stylesheet";
+styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
+document.head.appendChild(styleLink);

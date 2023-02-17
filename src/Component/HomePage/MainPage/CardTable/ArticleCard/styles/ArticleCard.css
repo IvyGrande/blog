@@ -1,6 +1,6 @@
 .table {
     margin: 30px 30px 0 30px;
-    height: 100px;
+    height: 120px;
     width: 1200px;
     display: flex;
     flex-direction: row;
@@ -17,11 +17,13 @@
 .table .cardItem {
     margin: 0px 0px 0px 30px;
     width: 1000px;
+}
 
-}
-.table .cardItem .cardTop{
+.table .cardItem .cardTop {
     height: 20px;
+    margin-bottom: 10px;
 }
+
 .table .cardItem h3 {
     margin: 0;
     padding: 0;
@@ -29,10 +31,11 @@
 
 .table .cardItem .row {
     overflow: hidden;
+    height: 39px;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    overflow:hidden;
+    overflow: hidden;
     -webkit-box-orient: vertical;
 }
 
@@ -51,7 +54,8 @@
     margin-bottom: 10px;
     width: 80px;
 }
-p{
+
+p {
     margin: 0;
     padding: 0;
 }
