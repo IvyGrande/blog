@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component Should set introduction to state when input is changed 1`] = `ShallowWrapper {}`;
+
+exports[`Modal component Should set name to state when input is changed 1`] = `ShallowWrapper {}`;
+
+exports[`Modal component Should set url to state when input is changed 1`] = `ShallowWrapper {}`;
+
+exports[`deleteAlert component Should set introduction to state when input is changed 1`] = `ShallowWrapper {}`;
+
+exports[`deleteAlert component Should set name to state when input is changed 1`] = `ShallowWrapper {}`;
+
+exports[`deleteAlert component Should set url to state when input is changed 1`] = `ShallowWrapper {}`;
+
+exports[`deleteAlert component Should set value to state when input is changed 1`] = `ShallowWrapper {}`;

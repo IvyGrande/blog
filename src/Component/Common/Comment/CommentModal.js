@@ -6,7 +6,7 @@ import uuid from "react-uuid";
 import CommentShowModal from "./ListModal/CommentShowModal";
 import "./styles/comment.css"
 
-const CommentModal = (props) => {
+export const CommentModal = (props) => {
   const [review, setReview] = useState("")
   const [reviewName, setReviewName] = useState("")
   const inputComment = (e) => {
@@ -20,8 +20,8 @@ const CommentModal = (props) => {
     setReview('')
     props.addComment(props.articleSelected.id, newComment);
   }
-  const articleToShow = props.articleIsShow.find(item => item.id === props.articleSelected.id && item)
-  const showComment = articleToShow.commentList.map(
+  const articleToShow = props.articleIsShow?.find(item => item.id === props.articleSelected.id && item)
+  const showComment = articleToShow?.commentList.map(
     item => {
       return (
         <CommentShowModal

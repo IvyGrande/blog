@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./styles/login.css"
 import { connect } from "react-redux";
 import { Button } from "@mui/material";
-import { updateAccount } from "../../redux/action/login/login";
+import { updateAccount } from "../../redux/action/login/loginAction";
 import { Input } from 'antd';
 import { useNavigate } from "react-router-dom";
 

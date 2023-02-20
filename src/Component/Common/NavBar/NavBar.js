@@ -1,6 +1,6 @@
 import React from "react";
 import './styles/NavBar.css'
-import { Link, List, ListItemButton, ListItemText } from "@mui/material";
+import { List, ListItemButton, ListItemText } from "@mui/material";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -13,14 +13,14 @@ const NavBar = (props) => {
         component="nav"
         aria-labelledby="nested-list-subheader"
       >
-        <ListItemButton className="nav"onClick={()=>navigate("/")}>
+        <ListItemButton className="nav" onClick={() => navigate("/")}>
           <ListItemText primary="主页"/>
         </ListItemButton>
-          <ListItemButton className="nav"onClick={()=>navigate("/hot")}>
-            <ListItemText primary="热点"/>
-          </ListItemButton>
+        <ListItemButton className="nav" onClick={() => navigate("/hot")}>
+          <ListItemText primary="热点"/>
+        </ListItemButton>
         {props.isAuthor &&
-          <ListItemButton onClick={()=>navigate("/mine")} className="nav">
+          <ListItemButton onClick={() => navigate("/mine")} className="nav">
             <ListItemText primary="我的"/>
           </ListItemButton>}
       </List>

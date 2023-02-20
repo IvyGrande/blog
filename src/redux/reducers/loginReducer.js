@@ -1,7 +1,8 @@
 import { UPDATE_ACCOUNT } from "../constants/constant";
 
 const initState = {
-  username: '', isAuthor: false
+  username: '',
+  isAuthor: false
 }
 
 const loginReducer = (state = initState, action) => {

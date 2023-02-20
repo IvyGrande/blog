@@ -4,7 +4,7 @@ import {
   ADD_COMMENT_TO_SPECIFIC_ARTICLE,
   DELETE_COMMENT_FROM_SPECIFIC_ARTICLE
 } from "../constants/constant";
-import Article_List from "../../Data/Article_List";
+import Article_List from "../../Data/article_List";
 
 const initState = {
   articleList: Article_List,
@@ -12,7 +12,6 @@ const initState = {
 
 export const articleReducer = (state = initState, action) => {
   switch (action.type) {
-
     case ADD_ARTICLE:
       const editedArticle = state.articleList.map((item) => item.id === action.newData.id ? action.newData : item)
       const newArticle = [...state.articleList, action.newData]
@@ -45,7 +44,7 @@ export const articleReducer = (state = initState, action) => {
           console.log("i", i.id === action.selectedId ? i.commentList : false)
           // const chosenArticle=i.id === action.selectedId&& i
           return i.id === action.selectedId ?
-            {...i, commentList: i.commentList.filter((item) => item.reviewId != action.reviewedId)} :
+            {...i, commentList: i.commentList.filter((item) => item.reviewId !== action.reviewedId)} :
             i
         }
       )
