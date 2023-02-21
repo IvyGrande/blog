@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const Header = (props) => {
+export const Header = (props) => {
   const navigate = useNavigate();
   const loginClick = () => {
     navigate("/login");
@@ -12,11 +12,14 @@ const Header = (props) => {
   const composeClick = () => {
     navigate("/compose");
   }
+
   return (
     <div className="header">
       <h1>Hello,{(props.isAuthor ? props.name : "visitor")}!</h1>
       <div className="login">
-        {!props.isAuthor && <Button variant="contained" onClick={loginClick}>Login</Button>}
+        {/*{!props.isAuthor &&*/}
+          <Button variant="contained" onClick={loginClick} id="test">Login</Button>
+        // }
         {props.isAuthor && <Button variant="contained" onClick={composeClick}>Compose</Button>}
       </div>
     </div>)

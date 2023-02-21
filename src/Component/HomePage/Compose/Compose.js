@@ -8,9 +8,9 @@ import { Button, Input } from "antd";
 import { Comment } from "semantic-ui-react";
 import CommentModal from "../../Common/Comment/CommentModal";
 
-const Compose = (props) => {
-  const [title, setTitle] = useState(props.articleSelected.title);
-  const [content, setContent] = useState(props.articleSelected.content);
+export const Compose = (props) => {
+  const [title, setTitle] = useState(props.articleSelected?.title);
+  const [content, setContent] = useState(props.articleSelected?.content);
   const navigate = useNavigate();
   const {TextArea} = Input;
 
@@ -92,7 +92,7 @@ const Compose = (props) => {
           </>
         }
         <Comment/>
-        {props.articleSelected.id && <CommentModal/>}
+        {props.articleSelected?.id && <CommentModal/>}
       </div>
     </div>
   )

@@ -1,49 +1,31 @@
-import Enzyme, { shallow } from 'enzyme'
+import Enzyme, { mount } from 'enzyme'
 import Adapter from '@cfaester/enzyme-adapter-react-18';
-import {CommentModal }from "../Comment/CommentModal";
+import { BrowserRouter as Router } from 'react-router-dom';
+import { CommentModal } from "../Comment/CommentModal";
+import { addComment } from "../../../redux/action/article/articleAction";
+import { ADD_COMMENT_TO_SPECIFIC_ARTICLE } from "../../../redux/constants/constant";
 
 Enzyme.configure({adapter: new Adapter()})
-describe('Modal component', () => {
+describe('Header component', () => {
   it('should render correct components', () => {
-    const wrapper = shallow(<CommentModal />);
-
+    const wrapper = mount(
+      <Router>
+        <CommentModal />
+      </Router>);
     expect(wrapper.find('.comment').length).toBe(1);
   });
 
-  // it('simulates click addReply button', () => {
-  //   const addReplyClickBtn = jest.fn();
-  //   const wrapper = shallow(<CommentModal handleClick={addReplyClickBtn}/>);
-  //   const addReplyBtn = wrapper.find('button').at(0);
-  //
-  //   addReplyBtn.simulate('click');
-  //   expect(addReplyClickBtn).toHaveBeenCalled();
-  // });
+    it('should dispatch if add a new comment', () => {
+      const action = {
+        type:ADD_COMMENT_TO_SPECIFIC_ARTICLE
+      }
 
-
-  it('Should set review to state when input is changed', () => {
-    const container = shallow(<CommentModal/>);
-    const input = container.find('Form.TextArea').at(0);
-    input.simulate('change', {target: {value: "review"}});
-    expect(container).toMatchSnapshot();
-  });
-  exports[`Index with enzyme Should set value to state when input is changed 1`] = `
-  <input
-    onChange={[Function]}
-    value="review"
-  />
-`;
-
-  it('Should set name to state when input is changed', () => {
-    const container = shallow(<CommentModal/>);
-    const input = container.find('input').at(0);
-    input.simulate('change', {target: {value: "name"}});
-    expect(container).toMatchSnapshot();
-  });
-  exports[`Index with enzyme Should set value to state when input is changed 1`] = `
-  <input
-    onChange={[Function]}
-    value="name"
-  />
-`;
-
-})
+      expect(
+        addComment(1,{},action)
+      ).toEqual({
+        type: ADD_COMMENT_TO_SPECIFIC_ARTICLE,
+        selectedId:1,
+        item:{}
+      })
+    })
+});

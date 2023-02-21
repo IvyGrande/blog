@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import "../styles/comment.css"
 import { deleteComment } from "../../../../redux/action/article/articleAction";
 
-const CommentShowModal = (props) => {
+export const CommentShowModal = (props) => {
   const handleClick = () => {
     console.log(props.id)
     console.log("id", props.articleSelected.id, props.id)

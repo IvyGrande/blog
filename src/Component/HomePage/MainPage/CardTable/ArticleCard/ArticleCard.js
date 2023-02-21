@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 
-const ArticleCard = (props) => {
+export const ArticleCard = (props) => {
   const navigate = useNavigate();
   const handleOpen = () => {
     const readCard = props.cardList.find(card =>
@@ -33,11 +33,11 @@ const ArticleCard = (props) => {
             <CardContent>
               <div className="cardItem">
                 <div className="cardTop">
-                  <h3>{props.list.title}</h3>
+                  <h3>{props.list?.title}</h3>
                 </div>
                 <div>
-                  <p className="row">{props.list.content}</p>
-                  <p>review:{props.list.commentList.length}</p>
+                  <p className="row">{props.list?.content}</p>
+                  <p>review:{props.list?.commentList.length}</p>
                 </div>
               </div>
             </CardContent>

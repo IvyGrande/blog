@@ -1,12 +1,15 @@
-import Enzyme, { shallow } from 'enzyme'
+import Enzyme, { mount } from 'enzyme'
 import Adapter from '@cfaester/enzyme-adapter-react-18';
-import NavBar from "../NavBar/NavBar";
+import { NavBar } from "../NavBar/NavBar";
+import { BrowserRouter as Router } from 'react-router-dom';
 
 Enzyme.configure({adapter: new Adapter()})
-describe('Modal component', () => {
+describe('Navbar component', () => {
   it('should render correct components', () => {
-    const wrapper = shallow(<NavBar/>);
-
+    const wrapper = mount(
+      <Router>
+        <NavBar/>
+      </Router>);
     expect(wrapper.find('.navbar').length).toBe(1);
   });
-})
+});

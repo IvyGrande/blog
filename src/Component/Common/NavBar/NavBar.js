@@ -4,7 +4,7 @@ import { List, ListItemButton, ListItemText } from "@mui/material";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const NavBar = (props) => {
+export const NavBar = (props) => {
   const navigate = useNavigate();
 
   return (
@@ -13,14 +13,14 @@ const NavBar = (props) => {
         component="nav"
         aria-labelledby="nested-list-subheader"
       >
-        <ListItemButton className="nav" onClick={() => navigate("/")}>
+        <ListItemButton className="button" onClick={() => navigate("/")}>
           <ListItemText primary="主页"/>
         </ListItemButton>
-        <ListItemButton className="nav" onClick={() => navigate("/hot")}>
+        <ListItemButton className="button" onClick={() => navigate("/hot")}>
           <ListItemText primary="热点"/>
         </ListItemButton>
         {props.isAuthor &&
-          <ListItemButton onClick={() => navigate("/mine")} className="nav">
+          <ListItemButton onClick={() => navigate("/mine")} className="button">
             <ListItemText primary="我的"/>
           </ListItemButton>}
       </List>

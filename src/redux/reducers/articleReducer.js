@@ -1,5 +1,5 @@
 import {
-  ADD_ARTICLE,
+  ADD_OR_EDIT_ARTICLE,
   DELETE_ARTICLE,
   ADD_COMMENT_TO_SPECIFIC_ARTICLE,
   DELETE_COMMENT_FROM_SPECIFIC_ARTICLE
@@ -12,7 +12,7 @@ const initState = {
 
 export const articleReducer = (state = initState, action) => {
   switch (action.type) {
-    case ADD_ARTICLE:
+    case ADD_OR_EDIT_ARTICLE:
       const editedArticle = state.articleList.map((item) => item.id === action.newData.id ? action.newData : item)
       const newArticle = [...state.articleList, action.newData]
       return {
