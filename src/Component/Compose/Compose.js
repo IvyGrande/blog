@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { useState } from "react";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
-import { cancelSelected, updateCard } from "../../../redux/action/article/articleAction";
+import { cancelSelected, updateCard } from "../../redux/action/article/articleAction";
 import { Button, Input } from "antd";
 import { Comment } from "semantic-ui-react";
-import CommentModal from "../../Common/Comment/CommentModal";
+import CommentModal from "../Common/Comment/CommentModal";
 
 export const Compose = (props) => {
   const [title, setTitle] = useState(props.articleSelected?.title);

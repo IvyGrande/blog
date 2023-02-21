@@ -39,16 +39,12 @@ export const articleReducer = (state = initState, action) => {
       }
 
     case DELETE_COMMENT_FROM_SPECIFIC_ARTICLE:
-      console.log("====", action)
       const deletedReviewArticle = state.articleList.map((i) => {
-          console.log("i", i.id === action.selectedId ? i.commentList : false)
-          // const chosenArticle=i.id === action.selectedId&& i
           return i.id === action.selectedId ?
             {...i, commentList: i.commentList.filter((item) => item.reviewId !== action.reviewedId)} :
             i
         }
       )
-      console.log("delete", deletedReviewArticle)
       return {
         ...state,
         articleList: deletedReviewArticle

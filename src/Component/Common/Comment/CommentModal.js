@@ -43,11 +43,13 @@ export const CommentModal = (props) => {
             onChange={inputComment}
             value={review}
           />
-          <Button content='Add Reply'
-                  labelPosition='left'
-                  icon='edit'
-                  onClick={handleClick}
-                  primary/>
+          <Button
+            content='Add Reply'
+            labelPosition='left'
+            icon='edit'
+            onClick={handleClick}
+            primary
+          />
         </Form>
       </Comment.Group>
     </div>

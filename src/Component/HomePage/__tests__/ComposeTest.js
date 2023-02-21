@@ -3,7 +3,7 @@ import Adapter from '@cfaester/enzyme-adapter-react-18';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { cancelSelected, updateCard } from "../../../redux/action/article/articleAction";
 import { ADD_OR_EDIT_ARTICLE, CANCEL_SELECT } from "../../../redux/constants/constant";
-import { Compose } from "../Compose/Compose";
+import { Compose } from "../../Compose/Compose";
 
 Enzyme.configure({adapter: new Adapter()})
 describe('compose component', () => {

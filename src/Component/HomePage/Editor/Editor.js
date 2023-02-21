@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../../Header/Header";
-import NavBar from "../../NavBar/NavBar";
+import Header from "../../Common/Header/Header";
+import NavBar from "../../Common/NavBar/NavBar";
 
 export default class Editor extends React.Component {
   render() {
@@ -10,7 +10,7 @@ export default class Editor extends React.Component {
           <Header/>
           <div className="main">
             <NavBar/>
-            <div>Editor</div>
+            <div>EDITOR</div>
           </div>
         </div>
       </div>

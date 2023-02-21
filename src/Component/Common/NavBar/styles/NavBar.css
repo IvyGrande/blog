@@ -1,11 +1,12 @@
-.navbar{
+.navbar {
     margin-left: 150px;
     background-color: #69799a;
     width: 250px;
-    height: 900px;
+    height: 1000px;
     padding: 20px 0;
+    color: white;
 }
 
-.navbar .nav{
+.navbar .nav {
     padding-left: 100px;
 }

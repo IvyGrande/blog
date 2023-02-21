@@ -7,8 +7,6 @@ import { deleteComment } from "../../../../redux/action/article/articleAction";
 
 export const CommentShowModal = (props) => {
   const handleClick = () => {
-    console.log(props.id)
-    console.log("id", props.articleSelected.id, props.id)
     props.deleteReviewId(props.articleSelected.id, props.id)
   }
   return (

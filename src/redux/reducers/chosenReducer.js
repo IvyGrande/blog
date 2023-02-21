@@ -10,7 +10,6 @@ const initState = {
 }
 
 const articleSelectedReducer = (state = initState, action) => {
-  console.log("select", action)
   switch (action.type) {
 
     case SELECT_CARD :

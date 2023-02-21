@@ -38,7 +38,6 @@ export const deleteComment = (selectedId, reviewedId) => {
   }
 }
 export const addComment = (selectedId, item) => {
-  console.log("action", selectedId, item)
   return {
     type: ADD_COMMENT_TO_SPECIFIC_ARTICLE,
     selectedId,

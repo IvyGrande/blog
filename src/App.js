@@ -1,9 +1,9 @@
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { MainPage } from "./Component/HomePage/MainPage/MainPage";
 import Login from "./Component/Login/Login";
 import Hot from "./Component/HomePage/Hot/Hot";
-import Compose from "./Component/HomePage/Compose/Compose";
-import Editor from "./Component/Common/Comment/Editor/Editor";
+import Compose from "./Component/Compose/Compose";
+import Editor from "./Component/HomePage/Editor/Editor";
 
 function App() {
   return (
