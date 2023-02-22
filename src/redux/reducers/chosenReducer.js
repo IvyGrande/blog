@@ -1,4 +1,4 @@
-import { CANCEL_SELECT, SELECT_CARD } from "../constants/constant";
+import { CANCEL_SELECT, SELECT_CARD } from "../../constants/constant";
 
 const initState = {
   articleSelected: {

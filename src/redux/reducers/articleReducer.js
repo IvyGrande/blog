@@ -3,8 +3,8 @@ import {
   DELETE_ARTICLE,
   ADD_COMMENT_TO_SPECIFIC_ARTICLE,
   DELETE_COMMENT_FROM_SPECIFIC_ARTICLE
-} from "../constants/constant";
-import Article_List from "../../Data/article_List";
+} from "../../constants/constant";
+import Article_List from "../state";
 
 const initState = {
   articleList: Article_List,
@@ -28,6 +28,7 @@ export const articleReducer = (state = initState, action) => {
 
     case ADD_COMMENT_TO_SPECIFIC_ARTICLE:
       const upDateReview = state.articleList.map((i) => {
+        console.log('111',action)
           return i.id === action.selectedId ?
             {...i, commentList: [...i.commentList, action.item]}
             : i
@@ -39,12 +40,16 @@ export const articleReducer = (state = initState, action) => {
       }
 
     case DELETE_COMMENT_FROM_SPECIFIC_ARTICLE:
+      console.log("====", action)
       const deletedReviewArticle = state.articleList.map((i) => {
+          console.log("i", i.id === action.selectedId ? i.commentList : false)
+          // const chosenArticle=i.id === action.selectedId&& i
           return i.id === action.selectedId ?
             {...i, commentList: i.commentList.filter((item) => item.reviewId !== action.reviewedId)} :
             i
         }
       )
+      console.log("delete", deletedReviewArticle)
       return {
         ...state,
         articleList: deletedReviewArticle

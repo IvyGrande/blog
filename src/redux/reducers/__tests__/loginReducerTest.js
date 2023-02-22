@@ -1,5 +1,5 @@
 import loginReducer from "../loginReducer";
-import { UPDATE_ACCOUNT } from "../../constants/constant";
+import { UPDATE_ACCOUNT } from "../../../constants/constant";
 
 describe('login reducer', () => {
   it('should return the initial state', () => {

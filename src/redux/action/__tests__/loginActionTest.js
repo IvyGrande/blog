@@ -1,5 +1,5 @@
-import * as actions from "../login/loginAction";
-import { UPDATE_ACCOUNT } from "../../constants/constant";
+import * as actions from "../loginAction";
+import { UPDATE_ACCOUNT } from "../../../constants/constant";
 
 describe('actions', () => {
   it('should create an action to store account', () => {

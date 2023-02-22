@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom";
-import { MainPage } from "./Component/HomePage/MainPage/MainPage";
-import Login from "./Component/Login/Login";
-import Hot from "./Component/HomePage/Hot/Hot";
-import Compose from "./Component/Compose/Compose";
-import Editor from "./Component/HomePage/Editor/Editor";
+import { HomePage } from "./components/HomePage/HomePage";
+import Login from "./components/Login/Login";
+import Hot from "./components/HomePage/Content/HotList/Hot";
+import Compose from "./components/ArticleContent/ArticleContent";
+import Editor from "./components/HomePage/Content/PersonalCenter/Editor";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<MainPage/>}/>
+      <Route path="/" element={<HomePage/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/compose" element={<Compose/>}/>
       <Route path="/hot" element={<Hot/>}/>

@@ -1,4 +1,4 @@
-import { UPDATE_ACCOUNT } from "../constants/constant";
+import { UPDATE_ACCOUNT } from "../../constants/constant";
 
 const initState = {
   username: '',

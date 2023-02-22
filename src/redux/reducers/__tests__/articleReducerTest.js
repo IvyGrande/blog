@@ -4,8 +4,8 @@ import {
   ADD_COMMENT_TO_SPECIFIC_ARTICLE,
   DELETE_ARTICLE,
   DELETE_COMMENT_FROM_SPECIFIC_ARTICLE
-} from "../../constants/constant";
-import Article_List from "../../../Data/article_List";
+} from "../../../constants/constant";
+import Article_List from "../../state";
 
 describe('article reducer', () => {
   it('should return the initial state', () => {

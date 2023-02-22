@@ -1,11 +1,11 @@
-import * as actions from "../article/articleAction";
+import * as actions from "../articleAction";
 import {
   ADD_OR_EDIT_ARTICLE, ADD_COMMENT_TO_SPECIFIC_ARTICLE,
   CANCEL_SELECT,
   DELETE_ARTICLE,
   DELETE_COMMENT_FROM_SPECIFIC_ARTICLE,
   SELECT_CARD
-} from "../../constants/constant";
+} from "../../../constants/constant";
 
 describe('actions', () => {
   it('should create an action to get a new article card', () => {
