@@ -8,11 +8,14 @@ import Editor from "./components/HomePage/Content/PersonalCenter/Editor";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage/>}/>
+      <Route path="/" element={<HomePage/>}>
+        {/*<Route index element={</>}/>*/}
+        <Route path="/hot" element={<Hot/>}/>
+        <Route path="/mine" element={<Editor/>}/>
+      </Route>
       <Route path="/login" element={<Login/>}/>
       <Route path="/compose" element={<Compose/>}/>
-      <Route path="/hot" element={<Hot/>}/>
-      <Route path="/mine" element={<Editor/>}/>
+
     </Routes>
   );
 }
