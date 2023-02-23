@@ -56,8 +56,8 @@ export const ArticleContent = (props) => {
         value={title}
         onChange={inputTitle}
         placeholder={props.isAuthor ? "Title..." : null}
-        readOnly={props.isAuthor ? false : true}
-        bordered={props.isAuthor ? true : false}
+        readOnly={!props.isAuthor}
+        bordered={props.isAuthor}
       />
       <TextArea
         rows={20}
@@ -65,8 +65,8 @@ export const ArticleContent = (props) => {
         value={content}
         onChange={inputContent}
         placeholder={props.isAuthor ? "Start here..." : null}
-        readOnly={props.isAuthor ? false : true}
-        bordered={props.isAuthor ? true : false}
+        readOnly={!props.isAuthor}
+        bordered={props.isAuthor}
       />
       {props.articleSelected?.id && <CommentModal/>}
     </div>
