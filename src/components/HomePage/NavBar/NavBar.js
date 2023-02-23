@@ -9,10 +9,10 @@ export const NavBar = (props) => {
 
   return (
     <div className="navbar">
-      <List
-        component="nav"
-        aria-labelledby="nested-list-subheader"
-      >
+      {/*<List*/}
+      {/*  component="nav"*/}
+      {/*  aria-labelledby="nested-list-subheader"*/}
+      {/*>*/}
         <ListItemButton className="button" onClick={() => navigate("/")}>
           <h4>主页</h4>
         </ListItemButton>
@@ -23,7 +23,7 @@ export const NavBar = (props) => {
           <ListItemButton onClick={() => navigate("/mine")} className="button">
             <h4>我的</h4>
           </ListItemButton>}
-      </List>
+      {/*</List>*/}
     </div>
   );
 }
