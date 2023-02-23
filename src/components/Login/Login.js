@@ -8,13 +8,23 @@ import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const [userName, setUserName] = useState();
+  const [password, setPassword] = useState();
   const navigate = useNavigate();
   const handleChangeAccount = (e) => {
     setUserName(e.target.value);
   }
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value)
+  }
   const userLogin = () => {
-    props.getUser(userName);
-    navigate("/");
+    if (!userName) {
+      alert('Please input userName!');
+    } else if (!password) {
+      alert('Please input password!');
+    } else {
+      props.getUser(userName);
+      navigate("/");
+    }
   }
 
   return (
@@ -34,7 +44,7 @@ const Login = (props) => {
         <div className="form-group">
           <label htmlFor="inputEmail3" className="col-sm-2 control-label">Password</label>
           <div className="form-control">
-            <Input.Password placeholder="password"/>
+            <Input.Password placeholder="password" onChange={handleChangePassword}/>
           </div>
         </div>
         <div className="loginBtn">
