@@ -47,9 +47,7 @@ const Login = (props) => {
             <Input.Password placeholder="password" onChange={handleChangePassword}/>
           </div>
         </div>
-        <div className="loginBtn">
           <Button variant="outlined" onClick={userLogin}>sign in</Button>
-        </div>
       </div>
     </div>
   );

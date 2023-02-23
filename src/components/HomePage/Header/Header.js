@@ -16,12 +16,10 @@ export const Header = (props) => {
   return (
     <div className="header">
       <h1>Hello,{(props.isAuthor ? props.name : "visitor")}!</h1>
-      <div className="login">
-        {!props.isAuthor &&
-          <Button variant="contained" onClick={loginClick} id="test">Login</Button>
-        }
-        {props.isAuthor && <Button variant="contained" onClick={composeClick}>Compose</Button>}
-      </div>
+      {!props.isAuthor &&
+        <Button variant="contained" onClick={loginClick} id="test">Login</Button>
+      }
+      {props.isAuthor && <Button variant="contained" onClick={composeClick}>Compose</Button>}
     </div>)
 };
 

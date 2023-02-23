@@ -39,6 +39,7 @@ export const CommentModal = (props) => {
         {showComment}
         <Form className="input-box" reply>
           <Form.TextArea
+            style={{width:"1000px"}}
             placeholder="Type something here…"
             onChange={inputComment}
             required={isCommentBoxEmpty && "required"}

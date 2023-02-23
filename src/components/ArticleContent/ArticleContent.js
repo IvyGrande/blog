@@ -1,11 +1,10 @@
-import "./styles/Compose.css"
+import "./styles/ArticleContent.css"
 import { connect } from "react-redux";
 import { useState } from "react";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
 import { cancelSelected, updateCard } from "../../redux/action/articleAction";
 import { Button, Input } from "antd";
-import { Comment } from "semantic-ui-react";
 import CommentModal from "./Comment/CommentModal";
 
 export const ArticleContent = (props) => {
@@ -40,60 +39,54 @@ export const ArticleContent = (props) => {
 
   return (
     <div className="compose">
-      <div className="block">
-        {!props.isAuthor &&
-          <>
-            <div className="head">
-              <h2>ARTICLE</h2>
-              <Button onClick={returnToHomepage} type="primary">Back To Homepage</Button></div>
-            <div className="textShow">
-              <TextArea
-                rows={1}
-                bordered={false}
-                readOnly
-                size="large"
-                value={title}
-              /></div>
-            <div className="text">
-              <TextArea
-                bordered={false}
-                rows={20}
-                readOnly
-                value={content}
-              />
+      {!props.isAuthor &&
+        <>
+          <div className="head">
+            <h2>ARTICLE</h2>
+            <Button onClick={returnToHomepage} type="primary">Back To Homepage</Button></div>
+          <TextArea
+            rows={1}
+            bordered={false}
+            style={{width: "1000px", marginTop: "10px"}}
+            readOnly
+            size="large"
+            value={title}
+          />
+          <TextArea
+            style={{width: "1000px", marginTop: "10px"}}
+            bordered={false}
+            rows={20}
+            readOnly
+            value={content}
+          />
+        </>
+      }
+      {props.isAuthor &&
+        <>
+          <div className="head">
+            <h2>{props.articleSelected.id ? "EDIT" : "COMPOSE"}</h2>
+            <div className="submit">
+              <Button onClick={cancel}>Cancel</Button>
+              <Button onClick={submitData} type="primary">Submit</Button>
             </div>
-          </>
-        }
-
-        {props.isAuthor &&
-          <>
-            <div className="head">
-              <h2>{props.articleSelected.id ? "EDIT" : "COMPOSE"}</h2>
-              <div className="submit">
-                <Button onClick={cancel}>Cancel</Button>
-                <Button onClick={submitData} type="primary">Submit</Button>
-              </div>
-            </div>
-            <div className="text">
-              <TextArea
-                placeholder="Title"
-                rows={1}
-                value={title}
-                onChange={inputTitle}
-              /></div>
-            <div className="text">
-              <TextArea
-                placeholder="Start here..."
-                rows={12}
-                value={content}
-                onChange={inputContent}
-              />
-            </div>
-          </>
-        }
-        <Comment/>
-        {props.articleSelected?.id && <CommentModal/>}
-      </div>
+          </div>
+          <TextArea
+            style={{width: "1000px", marginTop: "10px"}}
+            placeholder="Title"
+            rows={1}
+            value={title}
+            onChange={inputTitle}
+          />
+          <TextArea
+            style={{width: "1000px", marginTop: "10px"}}
+            placeholder="Start here..."
+            rows={12}
+            value={content}
+            onChange={inputContent}
+          />
+        </>
+      }
+      {props.articleSelected?.id && <CommentModal/>}
     </div>
   )
 }

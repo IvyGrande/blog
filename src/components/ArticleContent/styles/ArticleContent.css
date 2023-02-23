@@ -1,0 +1,24 @@
+.compose {
+    height: 900px;
+    width: 1800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #61dafb;
+}
+
+.compose .head {
+    margin-top: 40px;
+    width: 1000px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.compose .head button {
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+

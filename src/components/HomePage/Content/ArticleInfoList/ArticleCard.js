@@ -26,31 +26,27 @@ export const ArticleCard = (props) => {
     props.deleteId(props.id)
   }
   return (
-    <div className="table">
-      <Card>
-        <div className="tableBlock">
-          <CardActionArea onClick={handleOpen} disabled={props.isAuthor ? true : false}>
-            <CardContent>
-              <div className="cardItem">
-                <div className="cardTop">
-                  <h3>{props.list?.title}</h3>
-                </div>
-                <div>
-                  <p className="row">{props.list?.content}</p>
-                  <p>review:{props.list?.commentList.length}</p>
-                </div>
-              </div>
-            </CardContent>
-          </CardActionArea>
-          {props.isAuthor ?
-            <div className="changeState">
-              <Button onClick={editCard} variant="outlined">EDIT</Button>
-              <Button onClick={deleteCard} variant="outlined">DELETE</Button>
-            </div> : null
-          }
-        </div>
-      </Card>
-    </div>
+    <Card style={{margin: "30px"}}>
+      <div className="tableBlock">
+        <CardActionArea onClick={handleOpen} disabled={props.isAuthor ? true : false}>
+          <CardContent style={{width: "1000px", margin: "0 0 0 20px"}}>
+            <div className="cardTop">
+              <h3>{props.list?.title}</h3>
+            </div>
+            <div>
+              <p className="row">{props.list?.content}</p>
+              <p>review:{props.list?.commentList.length}</p>
+            </div>
+          </CardContent>
+        </CardActionArea>
+        {props.isAuthor ?
+          <div className="changeState">
+            <Button onClick={editCard} variant="outlined">EDIT</Button>
+            <Button onClick={deleteCard} variant="outlined">DELETE</Button>
+          </div> : null
+        }
+      </div>
+    </Card>
   )
 }
 
