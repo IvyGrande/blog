@@ -1,5 +1,4 @@
-.compose {
-    height: 900px;
+.article-page {
     width: 1800px;
     display: flex;
     flex-direction: column;
@@ -7,7 +6,7 @@
     color: #61dafb;
 }
 
-.compose .head {
+.article-page .head {
     margin-top: 40px;
     width: 1000px;
     height: 30px;
@@ -17,7 +16,7 @@
     flex-direction: row;
 }
 
-.compose .head button {
+.article-page .head button {
     margin-left: 10px;
     margin-bottom: 20px;
 }

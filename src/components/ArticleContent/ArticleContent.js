@@ -38,7 +38,7 @@ export const ArticleContent = (props) => {
   }
 
   return (
-    <div className="compose">
+    <div className="article-page">
       <div className="head">
         <h2>{props.isAuthor ? props.articleSelected.id ? "EDIT" : "COMPOSE" : "ARTICLE"}</h2>
         {props.isAuthor ?
