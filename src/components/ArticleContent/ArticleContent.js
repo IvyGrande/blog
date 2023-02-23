@@ -39,58 +39,39 @@ export const ArticleContent = (props) => {
 
   return (
     <div className="compose">
-      {!props.isAuthor &&
-        <>
-          <div className="head">
-            <h2>ARTICLE</h2>
-            <Button onClick={returnToHomepage} type="primary">Back To Homepage</Button></div>
-          <TextArea
-            rows={1}
-            bordered={false}
-            style={{width: "1000px", marginTop: "10px"}}
-            readOnly
-            size="large"
-            value={title}
-          />
-          <TextArea
-            style={{width: "1000px", marginTop: "10px"}}
-            bordered={false}
-            rows={20}
-            readOnly
-            value={content}
-          />
-        </>
-      }
-      {props.isAuthor &&
-        <>
-          <div className="head">
-            <h2>{props.articleSelected.id ? "EDIT" : "COMPOSE"}</h2>
-            <div className="submit">
-              <Button onClick={cancel}>Cancel</Button>
-              <Button onClick={submitData} type="primary">Submit</Button>
-            </div>
-          </div>
-          <TextArea
-            style={{width: "1000px", marginTop: "10px"}}
-            placeholder="Title"
-            rows={1}
-            value={title}
-            onChange={inputTitle}
-          />
-          <TextArea
-            style={{width: "1000px", marginTop: "10px"}}
-            placeholder="Start here..."
-            rows={12}
-            value={content}
-            onChange={inputContent}
-          />
-        </>
-      }
+      <div className="head">
+        <h2>{props.isAuthor ? props.articleSelected.id ? "EDIT" : "COMPOSE" : "ARTICLE"}</h2>
+        {props.isAuthor ?
+          <div className="submit">
+            <Button onClick={cancel}>Cancel</Button>
+            <Button onClick={submitData} type="primary">Submit</Button>
+          </div> :
+          <Button onClick={returnToHomepage} type="primary">Back To Homepage</Button>
+        }
+      </div>
+      <TextArea
+        rows={1}
+        style={{width: "1000px", marginTop: "10px"}}
+        size="large"
+        value={title}
+        onChange={inputTitle}
+        placeholder={props.isAuthor ? "Title..." : null}
+        readOnly={props.isAuthor ? false : true}
+        bordered={props.isAuthor ? true : false}
+      />
+      <TextArea
+        rows={20}
+        style={{width: "1000px", marginTop: "10px"}}
+        value={content}
+        onChange={inputContent}
+        placeholder={props.isAuthor ? "Start here..." : null}
+        readOnly={props.isAuthor ? false : true}
+        bordered={props.isAuthor ? true : false}
+      />
       {props.articleSelected?.id && <CommentModal/>}
     </div>
   )
 }
-
 const mapStateToProps = (state) => {
   return {
     articleSelected: state.articleSelectedReducer.articleSelected,
