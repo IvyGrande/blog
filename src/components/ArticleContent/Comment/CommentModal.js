@@ -9,17 +9,16 @@ import { addComment } from "../../../redux/action/articleAction";
 export const CommentModal = (props) => {
   const [review, setReview] = useState("")
   const [reviewName, setReviewName] = useState("")
+  const [isCommentBoxEmpty, setIsCommentBoxEmpty] = useState()
   const inputComment = (e) => {
     setReview(e.target.value)
     setReviewName(props.isAuthor ? props.name : "visitor")
-    console.log("name", review)
   }
   const handleClick = () => {
-    console.log("name", props.articleSelected.id)
-    console.log(props.isAuthor)
     const newComment = {reviewId: uuid(), reviewName, review}
     setReview('')
-    props.addComment(props.articleSelected.id, newComment);
+    setIsCommentBoxEmpty(false)
+    review ? props.addComment(props.articleSelected.id, newComment) : setIsCommentBoxEmpty(true);
   }
   const articleToShow = props.articleIsShow?.find(item => item.id === props.articleSelected.id && item)
   const showComment = articleToShow?.commentList.map(
@@ -42,6 +41,7 @@ export const CommentModal = (props) => {
           <Form.TextArea
             placeholder="Type something here…"
             onChange={inputComment}
+            required={isCommentBoxEmpty && "required"}
             value={review}
           />
           <Button
