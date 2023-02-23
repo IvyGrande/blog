@@ -22,7 +22,6 @@ const CardTable = (props) => {
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
     cardList: state.articleReducer.articleList
   }

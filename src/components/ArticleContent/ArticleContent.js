@@ -1,11 +1,10 @@
-import "./styles/Compose.css"
+import "./styles/ArticleContent.css"
 import { connect } from "react-redux";
 import { useState } from "react";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
 import { cancelSelected, updateCard } from "../../redux/action/articleAction";
 import { Button, Input } from "antd";
-import { Comment } from "semantic-ui-react";
 import CommentModal from "./Comment/CommentModal";
 
 export const ArticleContent = (props) => {
@@ -39,65 +38,40 @@ export const ArticleContent = (props) => {
   }
 
   return (
-    <div className="compose">
-      <div className="block">
-        {!props.isAuthor &&
-          <>
-            <div className="head">
-              <h2>ARTICLE</h2>
-              <Button onClick={returnToHomepage} type="primary">Back To Homepage</Button></div>
-            <div className="textShow">
-              <TextArea
-                rows={1}
-                bordered={false}
-                readOnly
-                size="large"
-                value={title}
-              /></div>
-            <div className="text">
-              <TextArea
-                bordered={false}
-                rows={20}
-                readOnly
-                value={content}
-              />
-            </div>
-          </>
+    <div className="article-page">
+      <div className="head">
+        <h2>{props.isAuthor ? props.articleSelected.id ? "EDIT" : "COMPOSE" : "ARTICLE"}</h2>
+        {props.isAuthor ?
+          <div className="submit">
+            <Button onClick={cancel}>Cancel</Button>
+            <Button onClick={submitData} type="primary">Submit</Button>
+          </div> :
+          <Button onClick={returnToHomepage} type="primary">Back To Homepage</Button>
         }
-
-        {props.isAuthor &&
-          <>
-            <div className="head">
-              <h2>{props.articleSelected.id ? "EDIT" : "COMPOSE"}</h2>
-              <div className="submit">
-                <Button onClick={cancel}>Cancel</Button>
-                <Button onClick={submitData} type="primary">Submit</Button>
-              </div>
-            </div>
-            <div className="text">
-              <TextArea
-                placeholder="Title"
-                rows={1}
-                value={title}
-                onChange={inputTitle}
-              /></div>
-            <div className="text">
-              <TextArea
-                placeholder="Start here..."
-                rows={12}
-                value={content}
-                onChange={inputContent}
-              />
-            </div>
-          </>
-        }
-        <Comment/>
-        {props.articleSelected?.id && <CommentModal/>}
       </div>
+      <TextArea
+        rows={1}
+        style={{width: "1000px", marginTop: "10px"}}
+        size="large"
+        value={title}
+        onChange={inputTitle}
+        placeholder={props.isAuthor ? "Title..." : null}
+        readOnly={!props.isAuthor}
+        bordered={props.isAuthor}
+      />
+      <TextArea
+        rows={20}
+        style={{width: "1000px", marginTop: "10px"}}
+        value={content}
+        onChange={inputContent}
+        placeholder={props.isAuthor ? "Start here..." : null}
+        readOnly={!props.isAuthor}
+        bordered={props.isAuthor}
+      />
+      {props.articleSelected?.id && <CommentModal/>}
     </div>
   )
 }
-
 const mapStateToProps = (state) => {
   return {
     articleSelected: state.articleSelectedReducer.articleSelected,

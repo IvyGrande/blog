@@ -1,0 +1,23 @@
+.article-page {
+    width: 1800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #61dafb;
+}
+
+.article-page .head {
+    margin-top: 40px;
+    width: 1000px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.article-page .head button {
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
