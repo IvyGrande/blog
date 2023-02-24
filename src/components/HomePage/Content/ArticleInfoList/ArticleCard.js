@@ -8,33 +8,34 @@ import { deleteCard, selectCard } from "../../../../redux/action/articleAction";
 import "./styles/ArticleCard.css"
 
 export const ArticleCard = (props) => {
-  const {articleList, id, list, isAuthor, selectCard, deleteId} = props;
+  const {articleList, id, list, isAuthor, selectCard, deleteCard} = props;
   const navigate = useNavigate();
 
-  const handleOpen = () => {
+  const openArticle = () => {
+    const articleChosen = articleList.find(card =>
+      card.id === id && card
+    );
+    selectCard(articleChosen);
+    navigate("/compose");
+  };
+
+  const editArticle = () => {
     const readCard = articleList.find(card =>
       card.id === id && card
+
     );
     selectCard(readCard);
     navigate("/compose");
   };
 
-  const editCard = () => {
-    const readCard = articleList.find(card =>
-      card.id === id && card
-    );
-    selectCard(readCard);
-    navigate("/compose");
-  };
-
-  const deleteCard = () => {
-    deleteId(id)
+  const deleteArticle = () => {
+    deleteCard(id)
   };
 
   return (
     <Card style={{margin: "30px"}}>
       <div className="tableBlock">
-        <CardActionArea onClick={handleOpen} disabled={isAuthor ? true : false}>
+        <CardActionArea onClick={openArticle} disabled={isAuthor ? true : false}>
           <CardContent style={{width: "1000px", margin: "0 0 0 20px"}}>
             <div className="cardTop">
               <h3>{list?.title}</h3>
@@ -47,8 +48,8 @@ export const ArticleCard = (props) => {
         </CardActionArea>
         {isAuthor
           ? <div className="changeState">
-            <Button onClick={editCard} variant="outlined">EDIT</Button>
-            <Button onClick={deleteCard} variant="outlined">DELETE</Button>
+            <Button onClick={editArticle} variant="outlined">EDIT</Button>
+            <Button onClick={deleteArticle} variant="outlined">DELETE</Button>
           </div>
           : null
         }
@@ -72,7 +73,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     selectCard: (e) => dispatch(selectCard(e)),
-    deleteId: (e) => dispatch(deleteCard(e)),
+    deleteCard: (e) => dispatch(deleteCard(e)),
   };
 };
 

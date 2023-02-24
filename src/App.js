@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
-import Login from "./components/Login/Login";
+import Login from "./components/LoginPage/LoginPage";
 import HotList from "./components/HomePage/Content/HotList/HotList";
 import Compose from "./components/ArticleContent/ArticleContent";
 import PersonalCenter from "./components/HomePage/Content/PersonalCenter/PersonalCenter";

@@ -5,29 +5,29 @@ import { Input } from 'antd';
 import { useNavigate } from "react-router-dom";
 
 import { updateAccount } from "../../redux/action/loginAction";
-import "./styles/login.css"
+import "./styles/loginPage.css"
 
-const Login = (props) => {
-  const {getUser} = props
+const LoginPage = (props) => {
+  const { updateAccount} = props
   const navigate = useNavigate();
 
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
-  const handleChangeAccount = (e) => {
+  const getUsername = (e) => {
     setUserName(e.target.value);
   };
 
-  const handleChangePassword = (e) => {
+  const getPassword = (e) => {
     setPassword(e.target.value);
   };
 
-  const userLogin = () => {
+  const clickToLogin = () => {
     if (!userName) {
       alert('Please input userName!');
     } else if (!password) {
       alert('Please input password!');
     } else {
-      getUser(userName);
+      updateAccount(userName);
       navigate("/");
     }
   };
@@ -42,17 +42,17 @@ const Login = (props) => {
             <Input type="username"
                    className="form-control"
                    id="inputEmail3"
-                   onChange={handleChangeAccount}
+                   onChange={getUsername}
                    placeholder="Username"/>
           </div>
         </div>
         <div className="form-group">
           <label htmlFor="inputEmail3" className="col-sm-2 control-label">Password</label>
           <div className="form-control">
-            <Input.Password placeholder="password" onChange={handleChangePassword}/>
+            <Input.Password placeholder="password" onChange={getPassword}/>
           </div>
         </div>
-        <Button variant="outlined" onClick={userLogin}>sign in</Button>
+        <Button variant="outlined" onClick={clickToLogin}>sign in</Button>
       </div>
     </div>
   );
@@ -60,8 +60,8 @@ const Login = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getUser: (e) => dispatch(updateAccount(e))
+    updateAccount: (e) => dispatch(updateAccount(e))
   };
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(LoginPage);
