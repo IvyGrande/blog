@@ -8,8 +8,6 @@ const rootReducer = combineReducers({
     articleReducer,
     articleSelectedReducer
   }
-)
+);
 
 export default rootReducer;
-
-

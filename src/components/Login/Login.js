@@ -1,31 +1,36 @@
 import React, { useState } from "react";
-import "./styles/login.css"
 import { connect } from "react-redux";
 import { Button } from "@mui/material";
-import { updateAccount } from "../../redux/action/loginAction";
 import { Input } from 'antd';
 import { useNavigate } from "react-router-dom";
 
+import { updateAccount } from "../../redux/action/loginAction";
+import "./styles/login.css"
+
 const Login = (props) => {
+  const {getUser} = props
+  const navigate = useNavigate();
+
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
-  const navigate = useNavigate();
   const handleChangeAccount = (e) => {
     setUserName(e.target.value);
-  }
+  };
+
   const handleChangePassword = (e) => {
-    setPassword(e.target.value)
-  }
+    setPassword(e.target.value);
+  };
+
   const userLogin = () => {
     if (!userName) {
       alert('Please input userName!');
     } else if (!password) {
       alert('Please input password!');
     } else {
-      props.getUser(userName);
+      getUser(userName);
       navigate("/");
     }
-  }
+  };
 
   return (
     <div className="loginBody">
@@ -47,16 +52,16 @@ const Login = (props) => {
             <Input.Password placeholder="password" onChange={handleChangePassword}/>
           </div>
         </div>
-          <Button variant="outlined" onClick={userLogin}>sign in</Button>
+        <Button variant="outlined" onClick={userLogin}>sign in</Button>
       </div>
     </div>
   );
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getUser: (e) => dispatch(updateAccount(e))
-  }
-}
+  };
+};
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(null, mapDispatchToProps)(Login);

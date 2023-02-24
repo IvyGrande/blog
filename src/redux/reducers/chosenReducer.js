@@ -7,7 +7,7 @@ const initState = {
     content: "",
     commentList: []
   }
-}
+};
 
 const articleSelectedReducer = (state = initState, action) => {
   switch (action.type) {
@@ -16,7 +16,7 @@ const articleSelectedReducer = (state = initState, action) => {
       return {
         ...state,
         articleSelected: action.cardSelected
-      }
+      };
 
     case CANCEL_SELECT:
       return {
@@ -27,11 +27,11 @@ const articleSelectedReducer = (state = initState, action) => {
           title: '',
           content: ''
         }
-      }
+      };
 
     default :
       return state;
   }
-}
+};
 
 export default articleSelectedReducer;

@@ -1,32 +1,39 @@
 import React from "react";
-import './styles/Header.css'
 import { Button } from "@mui/material";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import './styles/Header.css'
+
 export const Header = (props) => {
+  const {isAuthor,username} = props;
   const navigate = useNavigate();
-  const loginClick = () => {
-    navigate("/login");
-  }
+
   const composeClick = () => {
     navigate("/compose");
-  }
+  };
+
+  const loginClick = () => {
+    navigate("/login");
+  };
 
   return (
     <div className="header">
-      <h1>Hello,{(props.isAuthor ? props.name : "visitor")}!</h1>
-      {props.isAuthor ? <Button variant="contained" onClick={composeClick}>Compose</Button>
-        : <Button variant="contained" onClick={loginClick} id="test">Login</Button>
+      <h1>Hello,{(isAuthor ? username : "visitor")}!</h1>
+      {isAuthor
+        ? <Button variant="contained" onClick={composeClick}>Compose</Button>
+        : <Button variant="contained" onClick={loginClick}>Login</Button>
       }
-    </div>)
+    </div>);
 };
 
 const mapStateToProps = (state) => {
-  return {
-    isAuthor: state.loginReducer.isAuthor,
-    name: state.loginReducer.username
-  }
-}
+  const {isAuthor, username} = state.loginReducer;
 
-export default connect(mapStateToProps, null)(Header)
+  return {
+    isAuthor,
+    username,
+  };
+};
+
+export default connect(mapStateToProps, null)(Header);
