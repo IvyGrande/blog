@@ -11,7 +11,7 @@ export const ArticleCard = (props) => {
   const {articleList, id, list, isAuthor, selectCard, deleteCard} = props;
   const navigate = useNavigate();
 
-  const clickOpenArticle = () => {
+  const openArticle = () => {
     const articleChosen = articleList.find(card =>
       card.id === id && card
     );
@@ -19,22 +19,23 @@ export const ArticleCard = (props) => {
     navigate("/compose");
   };
 
-  const clickEditArticle = () => {
+  const editArticle = () => {
     const readCard = articleList.find(card =>
       card.id === id && card
+
     );
     selectCard(readCard);
     navigate("/compose");
   };
 
-  const clickDeleteArticle = () => {
+  const deleteArticle = () => {
     deleteCard(id)
   };
 
   return (
     <Card style={{margin: "30px"}}>
       <div className="tableBlock">
-        <CardActionArea onClick={clickOpenArticle} disabled={isAuthor ? true : false}>
+        <CardActionArea onClick={openArticle} disabled={isAuthor ? true : false}>
           <CardContent style={{width: "1000px", margin: "0 0 0 20px"}}>
             <div className="cardTop">
               <h3>{list?.title}</h3>
@@ -47,8 +48,8 @@ export const ArticleCard = (props) => {
         </CardActionArea>
         {isAuthor
           ? <div className="changeState">
-            <Button onClick={clickEditArticle} variant="outlined">EDIT</Button>
-            <Button onClick={clickDeleteArticle} variant="outlined">DELETE</Button>
+            <Button onClick={editArticle} variant="outlined">EDIT</Button>
+            <Button onClick={deleteArticle} variant="outlined">DELETE</Button>
           </div>
           : null
         }

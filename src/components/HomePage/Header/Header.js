@@ -9,7 +9,7 @@ export const Header = (props) => {
   const {isAuthor,username} = props;
   const navigate = useNavigate();
 
-  const clickComposeArticle = () => {
+  const composeArticle = () => {
     navigate("/compose");
   };
 
@@ -21,7 +21,7 @@ export const Header = (props) => {
     <div className="header">
       <h1>Hello,{(isAuthor ? username : "visitor")}!</h1>
       {isAuthor
-        ? <Button variant="contained" onClick={clickComposeArticle}>Compose</Button>
+        ? <Button variant="contained" onClick={composeArticle}>Compose</Button>
         : <Button variant="contained" onClick={clickLogin}>Login</Button>
       }
     </div>);
