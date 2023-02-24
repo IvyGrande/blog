@@ -17,11 +17,15 @@ export const ArticleContent = (props) => {
   const [content, setContent] = useState(articleSelected?.content);
 
   const submitData = () => {
-    const reviewInArticle = {...articleList.find(e => e.id === articleSelected.id && e)}.commentList || null;
-    const newArticle = {id: uuid(), title, content, commentList: []};
-    const editedArticle = {id: articleSelected.id, title, content, commentList: reviewInArticle || []};
+    const reviewInArticle = {...articleList.find(e => e.id === articleSelected.id && e)}.commentList || [];
 
-    articleSelected.id ? editSelectedArticle(editedArticle) : addNewArticle(newArticle);
+    if (articleSelected.id) {
+      const editedArticle = {id: articleSelected.id, title, content, commentList: reviewInArticle || []};
+      editSelectedArticle(editedArticle);
+    } else {
+      const newArticle = {id: uuid(), title, content, commentList: []};
+      addNewArticle(newArticle);
+    }
     cancel_select(articleSelected.commentList);
     navigate("/");
   };
