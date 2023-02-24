@@ -21,7 +21,7 @@ const LoginPage = (props) => {
     setPassword(e.target.value);
   };
 
-  const handleClickLoginBtn = () => {
+  const clickToLogin = () => {
     if (!userName) {
       alert('Please input userName!');
     } else if (!password) {
@@ -52,7 +52,7 @@ const LoginPage = (props) => {
             <Input.Password placeholder="password" onChange={getPassword}/>
           </div>
         </div>
-        <Button variant="outlined" onClick={handleClickLoginBtn}>sign in</Button>
+        <Button variant="outlined" onClick={clickToLogin}>sign in</Button>
       </div>
     </div>
   );

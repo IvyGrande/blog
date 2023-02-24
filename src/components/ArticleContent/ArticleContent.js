@@ -30,7 +30,7 @@ export const ArticleContent = (props) => {
     navigate("/");
   };
 
-  const handleClick_cancel = () => {
+  const clickCancel = () => {
     cancel_select(articleSelected.commentList);
     navigate("/");
   };
@@ -54,7 +54,7 @@ export const ArticleContent = (props) => {
         <h2>{isAuthor ? articleSelected.id ? "EDIT" : "COMPOSE" : "ARTICLE"}</h2>
         {isAuthor
           ? <div className="submit">
-            <Button onClick={handleClick_cancel}>Cancel</Button>
+            <Button onClick={clickCancel}>Cancel</Button>
             <Button onClick={submitData} type="primary">Submit</Button>
           </div>
           : <Button onClick={returnToHomepage} type="primary">Back To Homepage</Button>

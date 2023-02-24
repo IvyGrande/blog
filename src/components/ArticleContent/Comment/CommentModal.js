@@ -19,7 +19,7 @@ export const CommentModal = (props) => {
     setReviewName(isAuthor ? username : "visitor");
   };
 
-  const handleClick = () => {
+  const clickAddNewReview = () => {
     const newComment = {reviewId: uuid(), reviewName, review};
     setReview('');
     setIsCommentBoxEmpty(false);
@@ -56,7 +56,7 @@ export const CommentModal = (props) => {
             content='Add Reply'
             labelPosition='left'
             icon='edit'
-            onClick={handleClick}
+            onClick={clickAddNewReview}
             primary
           />
         </Form>
