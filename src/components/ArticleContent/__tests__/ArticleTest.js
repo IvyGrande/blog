@@ -1,8 +1,8 @@
 import Enzyme, { mount } from 'enzyme'
 import Adapter from '@cfaester/enzyme-adapter-react-18';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { cancelSelected, updateCard } from "../../../redux/action/articleAction";
-import { ADD_OR_EDIT_ARTICLE, CANCEL_SELECT } from "../../../constants/constant";
+import { cancelSelected, addNewArticle } from "../../../redux/action/articleAction";
+import { ADD_NEW_ARTICLE, CANCEL_SELECT } from "../../../constants/constant";
 import { ArticleContent } from "../ArticleContent";
 
 Enzyme.configure({adapter: new Adapter()})
@@ -17,13 +17,13 @@ describe('compose component', () => {
 
   it('should dispatch if add a new article or edit', () => {
     const action = {
-      type: ADD_OR_EDIT_ARTICLE,
+      type: ADD_NEW_ARTICLE,
     }
 
     expect(
-      updateCard({id: 3}, action)
+      addNewArticle({id: 3}, action)
     ).toEqual({
-      type: ADD_OR_EDIT_ARTICLE,
+      type: ADD_NEW_ARTICLE,
       newData: {id: 3}
     })
   })

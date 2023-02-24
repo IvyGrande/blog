@@ -4,5 +4,5 @@ export const updateAccount = (name) => {
   return {
     type: UPDATE_ACCOUNT,
     name
-  }
-}
+  };
+};

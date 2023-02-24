@@ -2,25 +2,31 @@ import React, { useState } from 'react'
 import { Button, Comment, Form } from 'semantic-ui-react'
 import { connect } from "react-redux";
 import uuid from "react-uuid";
+
 import CommentShowModal from "./CommentShowModal/CommentShowModal";
-import "./styles/comment.css"
 import { addComment } from "../../../redux/action/articleAction";
+import "./styles/comment.css"
 
 export const CommentModal = (props) => {
-  const [review, setReview] = useState("")
-  const [reviewName, setReviewName] = useState("")
-  const [isCommentBoxEmpty, setIsCommentBoxEmpty] = useState()
+  const {isAuthor, username, addComment, articleSelected, articleList} = props;
+
+  const [review, setReview] = useState("");
+  const [reviewName, setReviewName] = useState("");
+  const [isCommentBoxEmpty, setIsCommentBoxEmpty] = useState();
+
   const inputComment = (e) => {
-    setReview(e.target.value)
-    setReviewName(props.isAuthor ? props.name : "visitor")
-  }
+    setReview(e.target.value);
+    setReviewName(isAuthor ? username : "visitor");
+  };
+
   const handleClick = () => {
-    const newComment = {reviewId: uuid(), reviewName, review}
-    setReview('')
-    setIsCommentBoxEmpty(false)
-    review ? props.addComment(props.articleSelected.id, newComment) : setIsCommentBoxEmpty(true);
-  }
-  const articleToShow = props.articleIsShow?.find(item => item.id === props.articleSelected.id && item)
+    const newComment = {reviewId: uuid(), reviewName, review};
+    setReview('');
+    setIsCommentBoxEmpty(false);
+    review ? addComment(articleSelected.id, newComment) : setIsCommentBoxEmpty(true);
+  };
+
+  const articleToShow = articleList?.find(item => item.id === articleSelected.id && item);
   const showComment = articleToShow?.commentList.map(
     item => {
       return (
@@ -30,8 +36,9 @@ export const CommentModal = (props) => {
           content={item.review}
           nameShow={item.reviewName}
         />
-      )
-    })
+      );
+    });
+
   return (
     <div className="comment">
       <Comment.Group>
@@ -55,25 +62,29 @@ export const CommentModal = (props) => {
         </Form>
       </Comment.Group>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state) => {
+  const {isAuthor, username} = state.loginReducer;
+  const {articleSelected} = state.articleSelectedReducer;
+  const {articleList} = state.articleReducer;
+
   return {
-    articleIsShow: state.articleReducer.articleList,
-    articleSelected: state.articleSelectedReducer.articleSelected,
-    isAuthor: state.loginReducer.isAuthor,
-    name: state.loginReducer.username
-  }
-}
+    articleList,
+    articleSelected,
+    isAuthor,
+    username,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addComment: (selectedId, item) => dispatch(addComment(selectedId, item))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommentModal)
+export default connect(mapStateToProps, mapDispatchToProps)(CommentModal);
 
 const styleLink = document.createElement("link");
 

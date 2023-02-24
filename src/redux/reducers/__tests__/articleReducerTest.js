@@ -1,6 +1,6 @@
 import { articleReducer } from "../articleReducer";
 import {
-  ADD_OR_EDIT_ARTICLE,
+  ADD_NEW_ARTICLE,
   ADD_COMMENT_TO_SPECIFIC_ARTICLE,
   DELETE_ARTICLE,
   DELETE_COMMENT_FROM_SPECIFIC_ARTICLE
@@ -21,7 +21,7 @@ describe('article reducer', () => {
   it('should handle ADD_OR_EDIT_ARTICLE', () => {
     expect(
       articleReducer(undefined, {
-        type: ADD_OR_EDIT_ARTICLE,
+        type: ADD_NEW_ARTICLE,
         newData: {
           id: "21",
           title: "study",

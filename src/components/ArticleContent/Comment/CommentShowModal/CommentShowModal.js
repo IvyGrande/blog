@@ -1,45 +1,47 @@
+import React from "react";
 import { Button } from "antd";
 import { Comment } from "semantic-ui-react";
-import React from "react";
 import { connect } from "react-redux";
+
 import "../styles/comment.css"
 import { deleteComment } from "../../../../redux/action/articleAction";
 
 export const CommentShowModal = (props) => {
+  const {isAuthor, deleteReviewId, articleSelected, id, nameShow, content} = props;
+
   const handleClick = () => {
-    console.log("id",props.articleSelected.id)
-    props.deleteReviewId(props.articleSelected.id, props.id)
-  }
+    deleteReviewId(articleSelected.id, id);
+  };
+
   return (
-    <div className="showComment">
-      <Comment>
+      <Comment style={{width: '1000px'}}>
         <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/matt.jpg'/>
         <Comment.Content>
-          <div className="top">
-            <Comment.Author as='a'>{props.nameShow}</Comment.Author>
-            {props.isAuthor && <Button type="text" className="button" onClick={handleClick}>Delete</Button>}
-          </div>
-          <Comment.Text>{props.content}</Comment.Text>
+            <Comment.Author as='a'>{nameShow}</Comment.Author>
+            {isAuthor && <Button type="text" className="button" onClick={handleClick}>Delete</Button>}
+          <Comment.Text>{content}</Comment.Text>
         </Comment.Content>
       </Comment>
-    </div>
   )
 }
 
 const mapStateToProps = (state) => {
+  const {isAuthor} = state.loginReducer;
+  const {articleSelected} = state.articleSelectedReducer;
+  const {cardList} = state.articleReducer
+
   return {
-    isAuthor: state.loginReducer.isAuthor,
-    name: state.loginReducer.username,
-    articleSelected: state.articleSelectedReducer.articleSelected,
-    cardList: state.articleReducer.articleList
-  }
-}
+    isAuthor,
+    articleSelected,
+    cardList,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     deleteReviewId: (selectedId, reviewId) => dispatch(deleteComment(selectedId, reviewId))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommentShowModal)
+export default connect(mapStateToProps, mapDispatchToProps)(CommentShowModal);
 

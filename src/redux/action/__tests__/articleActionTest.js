@@ -1,6 +1,6 @@
 import * as actions from "../articleAction";
 import {
-  ADD_OR_EDIT_ARTICLE, ADD_COMMENT_TO_SPECIFIC_ARTICLE,
+  ADD_NEW_ARTICLE, ADD_COMMENT_TO_SPECIFIC_ARTICLE,
   CANCEL_SELECT,
   DELETE_ARTICLE,
   DELETE_COMMENT_FROM_SPECIFIC_ARTICLE,
@@ -11,10 +11,10 @@ describe('actions', () => {
   it('should create an action to get a new article card', () => {
     const newData = {}
     const expectedAction = {
-      type: ADD_OR_EDIT_ARTICLE,
+      type: ADD_NEW_ARTICLE,
       newData
     }
-    expect(actions.updateCard(newData)).toEqual(expectedAction)
+    expect(actions.addNewArticle(newData)).toEqual(expectedAction)
   });
 
   it('should create an action to get the selected card', () => {

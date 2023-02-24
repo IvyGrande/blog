@@ -1,52 +1,59 @@
-import "./styles/ArticleContent.css"
-import { connect } from "react-redux";
 import { useState } from "react";
-import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
-import { cancelSelected, updateCard } from "../../redux/action/articleAction";
+import { cancelSelected, addNewArticle, editSelectedArticle } from "../../redux/action/articleAction";
+import { connect } from "react-redux";
 import { Button, Input } from "antd";
+import uuid from "react-uuid";
+
 import CommentModal from "./Comment/CommentModal";
+import "./styles/ArticleContent.css"
 
 export const ArticleContent = (props) => {
-  const [title, setTitle] = useState(props.articleSelected?.title);
-  const [content, setContent] = useState(props.articleSelected?.content);
   const navigate = useNavigate();
   const {TextArea} = Input;
 
+  const {isAuthor, articleList, articleSelected, addNewArticle, editSelectedArticle, cancel_select} = props;
+  const [title, setTitle] = useState(articleSelected?.title);
+  const [content, setContent] = useState(articleSelected?.content);
+
   const submitData = () => {
-    const id = props.articleSelected.id ? props.articleSelected.id : uuid()
-    const reviewInArticle = props.articleIsShow.find(e => e.id === props.articleSelected.id && e)
-    const commentList = props.articleSelected.id ? reviewInArticle.commentList : []
-    const newArticle = {id, title, content, commentList}
-    props.getData(newArticle);
-    props.cancel_select(props.articleSelected.commentList);
+    const reviewInArticle = {...articleList.find(e => e.id === articleSelected.id && e)}.commentList || null;
+    const newArticle = {id: uuid(), title, content, commentList: []};
+    const editedArticle = {id: articleSelected.id, title, content, commentList: reviewInArticle || []};
+
+    articleSelected.id ? editSelectedArticle(editedArticle) : addNewArticle(newArticle);
+    cancel_select(articleSelected.commentList);
     navigate("/");
-  }
+  };
+
   const cancel = () => {
-    props.cancel_select(props.articleSelected.commentList);
+    cancel_select(articleSelected.commentList);
     navigate("/");
-  }
+  };
+
   const inputTitle = (e) => {
     setTitle(e.target.value)
   };
+
   const inputContent = (e) => {
     setContent(e.target.value)
   };
+
   const returnToHomepage = () => {
-    props.cancel_select(props.articleSelected.commentList);
+    cancel_select(articleSelected.commentList);
     navigate("/");
-  }
+  };
 
   return (
     <div className="article-page">
       <div className="head">
-        <h2>{props.isAuthor ? props.articleSelected.id ? "EDIT" : "COMPOSE" : "ARTICLE"}</h2>
-        {props.isAuthor ?
-          <div className="submit">
+        <h2>{isAuthor ? articleSelected.id ? "EDIT" : "COMPOSE" : "ARTICLE"}</h2>
+        {isAuthor
+          ? <div className="submit">
             <Button onClick={cancel}>Cancel</Button>
             <Button onClick={submitData} type="primary">Submit</Button>
-          </div> :
-          <Button onClick={returnToHomepage} type="primary">Back To Homepage</Button>
+          </div>
+          : <Button onClick={returnToHomepage} type="primary">Back To Homepage</Button>
         }
       </div>
       <TextArea
@@ -55,36 +62,41 @@ export const ArticleContent = (props) => {
         size="large"
         value={title}
         onChange={inputTitle}
-        placeholder={props.isAuthor ? "Title..." : null}
-        readOnly={!props.isAuthor}
-        bordered={props.isAuthor}
+        placeholder={isAuthor ? "Title..." : null}
+        readOnly={!isAuthor}
+        bordered={isAuthor}
       />
       <TextArea
         rows={20}
         style={{width: "1000px", marginTop: "10px"}}
         value={content}
         onChange={inputContent}
-        placeholder={props.isAuthor ? "Start here..." : null}
-        readOnly={!props.isAuthor}
-        bordered={props.isAuthor}
+        placeholder={isAuthor ? "Start here..." : null}
+        readOnly={!isAuthor}
+        bordered={isAuthor}
       />
-      {props.articleSelected?.id && <CommentModal/>}
+      {articleSelected?.id && <CommentModal/>}
     </div>
-  )
-}
+  );
+};
 const mapStateToProps = (state) => {
+  const {isAuthor} = state.loginReducer;
+  const {articleSelected} = state.articleSelectedReducer;
+  const {articleList} = state.articleReducer;
+
   return {
-    articleSelected: state.articleSelectedReducer.articleSelected,
-    articleIsShow: state.articleReducer.articleList,
-    isAuthor: state.loginReducer.isAuthor
-  }
-}
+    articleSelected,
+    articleList,
+    isAuthor,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getData: (e) => dispatch(updateCard(e)),
-    cancel_select: (e) => dispatch(cancelSelected(e))
-  }
-}
+    addNewArticle: (e) => dispatch(addNewArticle(e)),
+    cancel_select: (e) => dispatch(cancelSelected(e)),
+    editSelectedArticle: (e) => dispatch(editSelectedArticle(e)),
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleContent)
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleContent);
